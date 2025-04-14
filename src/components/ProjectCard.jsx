@@ -137,18 +137,7 @@ const ProjectCard = ({ project }) => {
       </div>
       
       {/* Footer with action links */}
-      <div className="px-6 py-4 bg-gray-50 dark:bg-gray-700/30 flex justify-between items-center">
-        {project.demoUrl && (
-          <a 
-            href={project.demoUrl} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors text-sm font-medium flex items-center"
-          >
-            <i className="fas fa-external-link-alt mr-1"></i> Live Demo
-          </a>
-        )}
-        
+      <div className="px-6 py-4 bg-gray-50 dark:bg-gray-700/30 flex justify-end items-center">
         <button 
           className="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors text-sm font-medium flex items-center"
           onClick={() => setShowDetails(!showDetails)}
