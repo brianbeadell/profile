@@ -175,7 +175,16 @@ const projects = [
       "Redesigned UI for payment clarity, added secure token handling, and mapped Shopify orders to internal systems."
     ],
     githubUrl: null,
-    demoUrl: null
+    demoUrl: null,
+    longDescription: "This project involved integrating a Django-based agricultural analysis system with Shopify's e-commerce platform to provide a seamless payment experience for bulk report orders. The implementation replaced a legacy payment system with a more reliable direct cart URL approach and webhook-based order tracking.",
+    features: [
+      "Direct cart URL generation for streamlined checkout process",
+      "Secure webhook handling for order status synchronization",
+      "Comprehensive settings configuration for Shopify API credentials",
+      "Redesigned payment UI with improved user experience",
+      "Robust error handling and logging throughout the integration"
+    ],
+    learnings: "Implementation Details:\n- Created and improved the checkout method: Implemented the `create_shopify_checkout` method in `paymentviews_bulk.py` that generates a direct cart URL with a hardcoded variant ID (46130184454372) for the \"Leaf Extract Analysis\" product\n- Simplified the URL structure to `https://shop.apical-ag.com/cart/{variant_id}:1` for reliability\n\nConfiguration:\n- Created `shopify_settings.py` with environment variables for API credentials\n- Configured shop URL, API version, and access scope settings\n- Implemented helper methods for authentication and API connectivity\n\nWebhook System:\n- Created `shopify_webhook.py` to process incoming order notifications\n- Implemented verification of webhook signatures for security\n- Set up handlers to match Shopify orders with internal bulk report orders\n\nUI Improvements:\n- Completely redesigned `shopify_bulk_payment.html` with a cleaner layout\n- Improved the user experience with better organization of payment options\n- Added a \"Report Summary\" button for better navigation\n- Made the UI more responsive and user-friendly\n\nChallenges Overcome:\n- Shifted from using the Checkout API (which required merchant approval) to a simpler cart URL approach\n- Fixed import issues with proper module paths\n- Corrected function naming from `can_pay_with_unit_credits` to `can_bulk_pay_with_unit_credits`\n- Improved error handling and logging throughout the integration"
   },
   {
     title: "DQN vs. Buy-and-Hold Financial Trading System",
