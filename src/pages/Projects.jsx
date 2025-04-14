@@ -389,7 +389,7 @@ const Projects = () => {
               <i className="fab fa-github mr-2"></i> GitHub
             </a>
             <a 
-              href="/Beadell_Resume_2024.pdf" 
+              href="/profile/Beadell_Resume_2024.pdf" 
               className="bg-white/10 hover:bg-white/20 text-white font-medium py-2 px-4 rounded-full backdrop-blur-sm transition-all duration-300 transform hover:-translate-y-1 flex items-center"
             >
               <i className="fas fa-file-pdf mr-2"></i> Resume
@@ -449,7 +449,7 @@ const Projects = () => {
               <i className="fab fa-github mr-2"></i> GitHub
             </a>
             <a 
-              href="/Beadell_Resume_2024.pdf" 
+              href="/profile/Beadell_Resume_2024.pdf" 
               className="bg-transparent hover:bg-white/10 text-white border border-white px-6 py-3 rounded-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
             >
               <i className="fas fa-file-pdf mr-2"></i> Download Resume

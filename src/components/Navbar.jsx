@@ -10,7 +10,7 @@ export default function Navbar({ darkMode, setDarkMode }) {
     { name: 'Home', path: '/' },
     { name: 'Projects', path: '/projects' },
     { name: 'Credentials', path: '/credentials' },
-    { name: 'Resume', path: '/Beadell_Resume_2024.pdf', external: true }
+    { name: 'Resume', path: '/profile/Beadell_Resume_2024.pdf', external: true }
   ];
 
   const isActive = (path) => pathname === path;

@@ -270,7 +270,7 @@ export default function Home() {
           
           <div className="flex justify-center">
             <a 
-              href="/Beadell_Resume_2024.pdf" 
+              href="/profile/Beadell_Resume_2024.pdf" 
               className="bg-white text-indigo-700 hover:bg-indigo-100 px-8 py-4 rounded-lg font-semibold shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2"
             >
               <i className="fas fa-file-pdf text-xl"></i> Download Resume
