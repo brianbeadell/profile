@@ -10,21 +10,25 @@
     <!-- Particle.js for background effects -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     
-    <!-- GitHub Pages SPA routing -->
-    <script type="text/javascript">
-      // Single Page Apps for GitHub Pages
-      // MIT License
-      // https://github.com/rafgraph/spa-github-pages
-      (function(l) {
-        if (l.search[1] === '/' ) {
-          var decoded = l.search.slice(1).split('&').map(function(s) { 
-            return s.replace(/~and~/g, '&')
-          }).join('?');
-          window.history.replaceState(null, null,
-              l.pathname.slice(0, -1) + decoded + l.hash
-          );
+    <!-- GitHub Pages redirect handling -->
+    <script>
+      (function() {
+        // Check for redirect from 404 page
+        const redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        
+        // If there was a redirect, handle it
+        if (redirect && redirect !== location.href) {
+          // Extract the path from the redirect URL
+          const url = new URL(redirect);
+          const path = url.pathname.replace('/profile', '');
+          
+          // If path exists, redirect to the hash route
+          if (path && path !== '/') {
+            history.replaceState(null, null, '/profile/#' + path);
+          }
         }
-      }(window.location))
+      })();
     </script>
   </head>
   <body>
