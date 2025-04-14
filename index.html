@@ -21,11 +21,11 @@
         if (redirect && redirect !== location.href) {
           // Extract the path from the redirect URL
           const url = new URL(redirect);
-          const path = url.pathname.replace('/profile', '');
+          const path = url.pathname;
           
           // If path exists, redirect to the hash route
           if (path && path !== '/') {
-            history.replaceState(null, null, '/profile/#' + path);
+            history.replaceState(null, null, '/#' + path);
           }
         }
       })();
