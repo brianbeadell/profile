@@ -80,7 +80,7 @@ export default function Credentials() {
   const militaryBackground = [
     {
       position: "Navy Veteran - Aviation Boatswain's Mate",
-      years: "2012-2018",
+      years: "2002-2004",
       description: "Deployed during Operation Iraqi Freedom. Developed exceptional leadership, critical thinking, and operational skills in high-pressure environments requiring precision and teamwork."
     }
   ];
