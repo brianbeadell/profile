@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 const ProjectCard = ({ project }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [showDetails, setShowDetails] = useState(false);
   
   // Randomly select a gradient for each card
   const gradients = [
@@ -47,6 +48,36 @@ const ProjectCard = ({ project }) => {
     if (lowerTech.includes('database') || lowerTech.includes('sql')) return 'fas fa-database';
     
     return techIcons[tech] || 'fas fa-code';
+  };
+  
+  // Additional project details content
+  const renderProjectDetails = () => {
+    return (
+      <div className="px-6 py-4 bg-gray-100 dark:bg-gray-700/50 border-t border-gray-200 dark:border-gray-700 animate-slideUp">
+        <h4 className="font-medium text-gray-800 dark:text-gray-200 mb-2">Project Details</h4>
+        <div className="text-sm text-gray-600 dark:text-gray-300">
+          <p className="mb-2">{project.longDescription || "This project demonstrates application of key technical skills and problem-solving approach."}</p>
+          
+          {project.features && (
+            <div className="mt-3">
+              <h5 className="font-medium text-gray-700 dark:text-gray-300 mb-1">Key Features:</h5>
+              <ul className="list-disc pl-5 space-y-1">
+                {project.features.map((feature, idx) => (
+                  <li key={idx}>{feature}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+          
+          {project.learnings && (
+            <div className="mt-3">
+              <h5 className="font-medium text-gray-700 dark:text-gray-300 mb-1">Learnings:</h5>
+              <p>{project.learnings}</p>
+            </div>
+          )}
+        </div>
+      </div>
+    )
   };
   
   return (
@@ -118,10 +149,17 @@ const ProjectCard = ({ project }) => {
           </a>
         )}
         
-        <button className="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors text-sm font-medium flex items-center">
-          <i className="fas fa-info-circle mr-1"></i> Details
+        <button 
+          className="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors text-sm font-medium flex items-center"
+          onClick={() => setShowDetails(!showDetails)}
+        >
+          <i className={`${showDetails ? 'fas fa-chevron-up' : 'fas fa-info-circle'} mr-1`}></i> 
+          {showDetails ? 'Hide Details' : 'Details'}
         </button>
       </div>
+      
+      {/* Expandable details section */}
+      {showDetails && renderProjectDetails()}
     </div>
   );
 };

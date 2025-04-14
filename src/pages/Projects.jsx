@@ -12,7 +12,16 @@ const projects = [
       "Filters for roles with 3 years experience or less and prioritizes fields like Generative AI, MLOps, and Computational Biology."
     ],
     githubUrl: "https://github.com/brianbeadell/ai-job-agent",
-    demoUrl: null
+    demoUrl: null,
+    longDescription: "I developed this tool to streamline my job search process by creating an end-to-end automation system. The application uses GPT-4 to analyze job postings, customize resumes, and auto-fill application forms, significantly reducing application time from 30 minutes to about 2 minutes per application.",
+    features: [
+      "Intelligent job scraping from multiple platforms using Playwright",
+      "Resume tailoring with GPT-4 based on job description analysis",
+      "Automatic form filling and application submission",
+      "PostgreSQL database for tracking applications and status",
+      "Customizable GPT prompt templates for different job types"
+    ],
+    learnings: "This project taught me about the challenges of web automation with varying site structures, the importance of rate limiting when interacting with APIs, and methods for optimizing large language model prompts for consistent results."
   },
   {
     title: "Quant Crypto Trading Bot",
@@ -75,7 +84,17 @@ const projects = [
       "Supports OpenAI, Claude, Cohere, HuggingFace models with full configurability."
     ],
     githubUrl: "https://github.com/brianbeadell/farstar-agent",
-    demoUrl: null
+    demoUrl: null,
+    longDescription: "Farstar is an extensible AI agent framework I developed to experiment with multi-modal input processing and reinforcement learning. It accepts voice, text, and image inputs, processes them through various AI models, and provides responses through a Discord bot interface.",
+    features: [
+      "Voice-to-text transcription using OpenAI Whisper",
+      "Multi-model inference with OpenAI, Claude, Cohere, and HuggingFace integration",
+      "Reinforcement learning feedback loop using a DQN model",
+      "Memory management with flexible vector database storage",
+      "Plugin architecture for easy extension of capabilities",
+      "Discord bot interface for multi-user interaction"
+    ],
+    learnings: "This project deepened my understanding of reinforcement learning approaches for AI agents, effective prompt engineering techniques, and the challenges of combining multiple AI models into a cohesive system. I also gained experience in implementing user feedback loops to improve model responses over time."
   },
   {
     title: "Apple Disease Identifier (CV Project)",
