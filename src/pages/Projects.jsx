@@ -187,7 +187,16 @@ const projects = [
       "Delivered side-by-side plots and risk-adjusted performance comparisons to evaluate AI vs. conventional portfolio growth strategies."
     ],
     githubUrl: "https://github.com/brianbeadell/dqn-trading",
-    demoUrl: null
+    demoUrl: null,
+    longDescription: "This application is a financial trading system that evaluates and compares a Deep Q-Network (DQN) agent against a traditional buy-and-hold investment strategy. It uses reinforcement learning to make dynamic trading decisions and benchmarks performance against a passive investment approach across multiple tech stocks.",
+    features: [
+      "DQN reinforcement learning agent that learns optimal trading patterns",
+      "Backtesting framework using historical stock data from Yahoo Finance API",
+      "Performance evaluation with metrics like total return, max drawdown, and Sharpe ratio",
+      "Comparative visualization tools showing portfolio growth over time",
+      "Detailed results logging with CSV exports and timestamped reports"
+    ],
+    learnings: "DQN Agent Trading Strategy:\n- Implements a reinforcement learning model that learns to trade across multiple stocks\n- Makes dynamic trading decisions based on market data and portfolio state\n- Tracks performance metrics including portfolio value, returns, and risk metrics\n\nBuy-and-Hold Strategy Comparison:\n- Implements a baseline strategy that invests equally across selected stocks\n- Maintains the same allocation throughout the testing period\n- Calculates comparable performance metrics for benchmarking\n\nBacktesting Framework:\n- Tests strategies on historical stock price data downloaded from Yahoo Finance\n- Evaluates performance across multiple tickers (AAPL, MSFT, GOOGL, AMZN, META)\n- Uses data from 2021-01-01 to 2023-01-01\n\nPerformance Metrics:\n- Calculates total return percentage\n- Tracks maximum drawdown (worst peak-to-trough decline)\n- Computes Sharpe ratio (risk-adjusted return)\n- Records trade frequency and distribution across stocks\n\nVisualization & Logging:\n- Comparison plots showing portfolio value over time\n- Bar charts comparing total returns between strategies\n- Detailed performance data exported to CSV files\n- Summary comparison reports between strategies"
   }
 ];
 
