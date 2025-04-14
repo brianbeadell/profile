@@ -236,6 +236,7 @@ export default function Home() {
         </div>
       </section>
       
+      {/* Custom styling for animations */}
       <style>
         {`
         .animate-in {

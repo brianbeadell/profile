@@ -31,7 +31,16 @@ const projects = [
       "Uses TA indicators, deep learning, and NLP sentiment scoring for signal generation."
     ],
     githubUrl: "https://github.com/brianbeadell/crypto-trader",
-    demoUrl: null
+    demoUrl: null,
+    longDescription: "This cryptocurrency trading bot combines technical analysis, machine learning, and sentiment analysis to make data-driven trading decisions. It uses a desktop dashboard built with PyQt6 to visualize market data, display trading signals, and execute trades across multiple cryptocurrency pairs.",
+    features: [
+      "Real-time price data visualization with interactive charts",
+      "Sentiment analysis of social media (Reddit) and news sources",
+      "Machine learning models for price prediction using LSTM networks",
+      "Technical indicator-based signal generation (RSI, MACD, Bollinger Bands)",
+      "Automated trade execution with risk management features"
+    ],
+    learnings: "Languages:\n- Python (primary language)\n\nFrameworks and Libraries:\n- UI/Dashboard: PyQt6 (Qt framework for Python), pyqtgraph (for plotting and visualization)\n- API and Data Access: ccxt (for cryptocurrency exchange APIs), requests (for HTTP API calls), Alpha Vantage API (for market data)\n- Data Processing: pandas (for data manipulation), numpy (for calculations), TA-Lib (technical indicators like RSI, MACD)\n- Machine Learning: TensorFlow/Keras (for deep learning), scikit-learn (for random forest models), joblib (for model serialization)\n- Natural Language Processing: NLTK, VADER (for sentiment analysis), TextBlob (text processing), BeautifulSoup (HTML parsing)\n\nArchitecture:\nThe system is built with a modular architecture using Python classes, with Qt components providing an interactive dashboard that displays market data, sentiment analysis, and trading signals."
   },
   {
     title: "CryptoBot – ML-Powered Crypto Trading System",
@@ -44,7 +53,16 @@ const projects = [
       "Secured API access with VPN checks and environment-based key storage; tracked performance with win/loss analytics and P&L logging."
     ],
     githubUrl: "https://github.com/brianbeadell/cryptobot",
-    demoUrl: null
+    demoUrl: null,
+    longDescription: "The CryptoBot is an automated cryptocurrency trading system that uses machine learning for price prediction and trade execution. It continuously monitors cryptocurrency markets, analyzes price data using LSTM neural networks, and automatically executes trades based on ML predictions with comprehensive risk management.",
+    features: [
+      "Automated trading across multiple cryptocurrency pairs (BTC/USD, ETH/USD, SOL/USD, etc.)",
+      "LSTM neural networks for price movement prediction based on technical indicators",
+      "Advanced risk management with stop-loss, trailing stops, and volatility-based position sizing",
+      "Performance tracking with win/loss ratio, accuracy, drawdown, and P&L metrics",
+      "API integration with Kraken exchange through CCXT, with security features and VPN verification"
+    ],
+    learnings: "Core Features:\n- Automated Trading: Continuously monitors markets, analyzes price data, and executes trades based on ML predictions\n- Machine Learning Model: Sequential neural network with LSTM layers to predict price movements from technical indicators\n- Multi-Pair Support: Trades BTC/USD, ETH/USD, SOL/USD, DOGE/USD, ADA/USD, DOT/USD, LINK/USD, MATIC/USD, and AVAX/USD\n- Risk Management: Stop-loss orders, maximum position sizing, daily trade limits, trailing stops, volatility-based position sizing\n- Security Features: VPN connection verification, secure API credential storage, secure trading environment\n\nTechnical Implementation:\n- TensorFlow/Keras for deep learning models with LSTM architecture\n- CCXT library for unified exchange API integration\n- pandas-TA for technical indicators and feature engineering\n- Custom loss function optimized for directional accuracy\n- Signal generation combining ML predictions with technical indicators\n\nArchitecture:\n- Main controller module for trade execution and monitoring\n- Strategy modules for signal generation and analysis\n- Risk management system with position sizing and stop management\n- Data processing pipeline for feature engineering\n- Performance tracking and analytics system"
   },
   {
     title: "theFitness App – Full-Stack Fitness Tracker",
@@ -273,7 +291,8 @@ export default function Projects() {
       </div>
       
       {/* Custom styling for animations */}
-      <style jsx>{`
+      <style>
+        {`
         .animate-in {
           opacity: 1 !important;
           transform: translateY(0) !important;
@@ -283,7 +302,8 @@ export default function Projects() {
           background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 0);
           background-size: 20px 20px;
         }
-      `}</style>
+        `}
+      </style>
     </div>
   );
 }

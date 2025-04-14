@@ -52,15 +52,46 @@ const ProjectCard = ({ project }) => {
   
   // Additional project details content
   const renderProjectDetails = () => {
+    // Function to render text with newlines as proper paragraphs
+    const formatText = (text) => {
+      if (!text) return null;
+      
+      // If the text contains markdown-like sections with headers
+      if (text.includes('\n\n')) {
+        return text.split('\n\n').map((section, idx) => {
+          const lines = section.split('\n');
+          // Check if this is a header section
+          if (lines[0].endsWith(':')) {
+            return (
+              <div key={idx} className="mb-4">
+                <h5 className="font-medium text-gray-800 dark:text-gray-200 mb-2">{lines[0]}</h5>
+                <ul className="list-disc pl-5 space-y-1">
+                  {lines.slice(1).map((line, lineIdx) => (
+                    <li key={lineIdx} className={line.startsWith('- ') ? 'ml-2' : ''}>
+                      {line.replace(/^- /, '')}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          }
+          // Regular paragraph
+          return <p key={idx} className="mb-3">{section}</p>;
+        });
+      }
+      
+      return <p>{text}</p>;
+    };
+
     return (
       <div className="px-6 py-4 bg-gray-100 dark:bg-gray-700/50 border-t border-gray-200 dark:border-gray-700 animate-slideUp">
-        <h4 className="font-medium text-gray-800 dark:text-gray-200 mb-2">Project Details</h4>
+        <h4 className="font-medium text-lg text-gray-800 dark:text-gray-200 mb-3">Project Details</h4>
         <div className="text-sm text-gray-600 dark:text-gray-300">
-          <p className="mb-2">{project.longDescription || "This project demonstrates application of key technical skills and problem-solving approach."}</p>
+          <p className="mb-4">{project.longDescription || "This project demonstrates application of key technical skills and problem-solving approach."}</p>
           
           {project.features && (
-            <div className="mt-3">
-              <h5 className="font-medium text-gray-700 dark:text-gray-300 mb-1">Key Features:</h5>
+            <div className="mt-3 mb-4">
+              <h5 className="font-medium text-gray-700 dark:text-gray-300 mb-2">Key Features:</h5>
               <ul className="list-disc pl-5 space-y-1">
                 {project.features.map((feature, idx) => (
                   <li key={idx}>{feature}</li>
@@ -70,9 +101,11 @@ const ProjectCard = ({ project }) => {
           )}
           
           {project.learnings && (
-            <div className="mt-3">
-              <h5 className="font-medium text-gray-700 dark:text-gray-300 mb-1">Learnings:</h5>
-              <p>{project.learnings}</p>
+            <div className="mt-4">
+              <h5 className="font-medium text-gray-700 dark:text-gray-300 mb-2">Tech Stack & Learnings:</h5>
+              <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-md border border-gray-200 dark:border-gray-700">
+                {formatText(project.learnings)}
+              </div>
             </div>
           )}
         </div>
