@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ProjectCard from '../components/ProjectCard';
 
 // Main projects array with all project information
@@ -226,8 +226,43 @@ const Projects = () => {
   const headerRef = useRef(null);
   const projectsRef = useRef(null);
   const contactRef = useRef(null);
+  const [robotPosition, setRobotPosition] = useState({ x: 20, y: 100 });
+  const [robotDirection, setRobotDirection] = useState(1); // 1 for right, -1 for left
 
-  // Animate elements on initial load
+  // Robot animation
+  useEffect(() => {
+    const moveRobot = () => {
+      setRobotPosition(prev => {
+        // Calculate new position
+        let newX = prev.x + (2 * robotDirection);
+        let newY = prev.y;
+        
+        // Change direction if robot reaches edge of screen
+        if (newX > window.innerWidth - 60) {
+          setRobotDirection(-1);
+          newX = window.innerWidth - 60;
+        } else if (newX < 20) {
+          setRobotDirection(1);
+          newX = 20;
+        }
+        
+        // Occasionally make the robot jump
+        if (Math.random() < 0.02) {
+          newY = prev.y - 5;
+          setTimeout(() => {
+            setRobotPosition(current => ({ ...current, y: current.y + 5 }));
+          }, 300);
+        }
+        
+        return { x: newX, y: newY };
+      });
+    };
+    
+    const robotInterval = setInterval(moveRobot, 50);
+    return () => clearInterval(robotInterval);
+  }, [robotDirection]);
+
+  // Original animations for page elements
   useEffect(() => {
     const animateElements = () => {
       // Animate header
@@ -257,6 +292,72 @@ const Projects = () => {
 
   return (
     <div className="relative min-h-screen bg-gray-50 dark:bg-gray-900">
+      {/* AI-inspired background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Background gradient and effects */}
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/30 via-purple-500/20 to-blue-500/30 dark:from-indigo-900/40 dark:via-purple-900/30 dark:to-blue-900/40"></div>
+        
+        {/* Floating orbs/particles */}
+        <div className="absolute top-20 left-1/4 w-32 h-32 rounded-full bg-blue-300/30 dark:bg-blue-400/20 blur-xl animate-float-slow"></div>
+        <div className="absolute top-40 right-1/3 w-40 h-40 rounded-full bg-purple-300/30 dark:bg-purple-400/20 blur-xl animate-float-medium"></div>
+        <div className="absolute bottom-1/4 left-1/5 w-36 h-36 rounded-full bg-indigo-300/30 dark:bg-indigo-400/20 blur-xl animate-float-fast"></div>
+        <div className="absolute top-1/3 right-1/4 w-24 h-24 rounded-full bg-cyan-300/30 dark:bg-cyan-400/20 blur-xl animate-float-medium"></div>
+        <div className="absolute bottom-1/3 right-1/5 w-28 h-28 rounded-full bg-pink-300/30 dark:bg-pink-400/20 blur-xl animate-float-slow"></div>
+        
+        {/* Binary code particles */}
+        <div className="absolute inset-0 opacity-20 dark:opacity-25 overflow-hidden">
+          <div className="binary-particle text-indigo-600/60 dark:text-indigo-400/60 text-xl font-mono absolute top-[10%] left-[5%] animate-binary-fall-slow">01001</div>
+          <div className="binary-particle text-purple-600/60 dark:text-purple-400/60 text-xl font-mono absolute top-[8%] left-[25%] animate-binary-fall-medium">10110</div>
+          <div className="binary-particle text-blue-600/60 dark:text-blue-400/60 text-xl font-mono absolute top-[5%] left-[45%] animate-binary-fall-fast">00101</div>
+          <div className="binary-particle text-indigo-600/60 dark:text-indigo-400/60 text-xl font-mono absolute top-[3%] left-[65%] animate-binary-fall-slow">11010</div>
+          <div className="binary-particle text-purple-600/60 dark:text-purple-400/60 text-xl font-mono absolute top-[7%] left-[85%] animate-binary-fall-medium">01101</div>
+          <div className="binary-particle text-blue-600/60 dark:text-blue-400/60 text-xl font-mono absolute top-[12%] left-[15%] animate-binary-fall-fast">10010</div>
+          <div className="binary-particle text-indigo-600/60 dark:text-indigo-400/60 text-xl font-mono absolute top-[9%] left-[35%] animate-binary-fall-slow">00110</div>
+          <div className="binary-particle text-purple-600/60 dark:text-purple-400/60 text-xl font-mono absolute top-[6%] left-[55%] animate-binary-fall-medium">11001</div>
+          <div className="binary-particle text-blue-600/60 dark:text-blue-400/60 text-xl font-mono absolute top-[4%] left-[75%] animate-binary-fall-fast">10101</div>
+          <div className="binary-particle text-indigo-600/60 dark:text-indigo-400/60 text-xl font-mono absolute top-[2%] left-[95%] animate-binary-fall-slow">01010</div>
+        </div>
+        
+        {/* Grid pattern overlay */}
+        <div className="absolute inset-0 bg-grid-pattern opacity-30 dark:opacity-20"></div>
+      </div>
+
+      {/* Little robot character */}
+      <div 
+        className="fixed z-50 select-none pointer-events-none transition-transform"
+        style={{ 
+          left: `${robotPosition.x}px`, 
+          top: `${robotPosition.y}px`,
+          transform: `scaleX(${robotDirection})` 
+        }}
+      >
+        <div className="relative flex flex-col items-center">
+          {/* Robot head */}
+          <div className="w-12 h-10 bg-gray-800 dark:bg-indigo-600 rounded-t-lg relative flex items-center justify-center">
+            {/* Eyes */}
+            <div className="absolute w-2 h-2 bg-blue-400 rounded-full animate-pulse-slow" style={{ left: '25%', top: '40%' }}></div>
+            <div className="absolute w-2 h-2 bg-blue-400 rounded-full animate-pulse-slow" style={{ right: '25%', top: '40%' }}></div>
+            {/* Antenna */}
+            <div className="absolute -top-3 w-1 h-3 bg-gray-700 dark:bg-indigo-700">
+              <div className="w-2 h-2 rounded-full bg-red-500 absolute -top-1 left-50% transform -translate-x-1/2 animate-pulse-slow"></div>
+            </div>
+          </div>
+          {/* Robot body */}
+          <div className="w-10 h-8 bg-gray-700 dark:bg-indigo-700 relative flex justify-center">
+            {/* Control panel */}
+            <div className="absolute top-1 w-6 h-3 bg-gray-600 dark:bg-indigo-800 rounded-sm flex items-center justify-around px-1">
+              <div className="w-1 h-1 bg-green-400 rounded-full"></div>
+              <div className="w-1 h-1 bg-yellow-400 rounded-full"></div>
+            </div>
+          </div>
+          {/* Robot legs */}
+          <div className="flex justify-center w-full">
+            <div className={`w-2 h-5 bg-gray-900 dark:bg-indigo-800 mx-1 ${robotDirection > 0 ? 'animate-leg-left' : 'animate-leg-right'}`}></div>
+            <div className={`w-2 h-5 bg-gray-900 dark:bg-indigo-800 mx-1 ${robotDirection > 0 ? 'animate-leg-right' : 'animate-leg-left'}`}></div>
+          </div>
+        </div>
+      </div>
+
       {/* Header section with parallax effect and contact info */}
       <div ref={headerRef} className="relative overflow-hidden bg-indigo-900 dark:bg-gray-800 opacity-0 transform translate-y-4 transition-all duration-1000">
         <div className="absolute inset-0 opacity-30 bg-pattern-grid"></div>
@@ -378,6 +479,26 @@ const Projects = () => {
 
         .animate-float {
           animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes legLeft {
+          0%, 100% { transform: rotate(-15deg); }
+          50% { transform: rotate(15deg); }
+        }
+
+        @keyframes legRight {
+          0%, 100% { transform: rotate(15deg); }
+          50% { transform: rotate(-15deg); }
+        }
+
+        .animate-leg-left {
+          animation: legLeft 0.5s infinite;
+          transform-origin: top;
+        }
+
+        .animate-leg-right {
+          animation: legRight 0.5s infinite;
+          transform-origin: top;
         }
         `}
       </style>

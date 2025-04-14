@@ -6,7 +6,7 @@ const HeroSection = () => {
 
   useEffect(() => {
     // Initialize particles.js
-    if (window.particlesJS) {
+    if (typeof window !== 'undefined' && window.particlesJS) {
       window.particlesJS("particles-js", {
         particles: {
           number: {
@@ -95,6 +95,8 @@ const HeroSection = () => {
         },
         retina_detect: true
       });
+    } else {
+      console.warn("particles.js not loaded");
     }
     
     // Set loaded state after a short delay to trigger animations
