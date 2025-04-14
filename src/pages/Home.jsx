@@ -100,6 +100,7 @@ export default function Home() {
                     <div>
                       <p className="text-white/80 text-sm">Education</p>
                       <p className="font-medium">M.S. Data Science</p>
+                      <p className="font-medium">B.S. Biology</p>
                     </div>
                   </div>
                   

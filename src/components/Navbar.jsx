@@ -9,7 +9,8 @@ export default function Navbar({ darkMode, setDarkMode }) {
   const navigation = [
     { name: 'Home', path: '/' },
     { name: 'Projects', path: '/projects' },
-    { name: 'Credentials', path: '/credentials' }
+    { name: 'Credentials', path: '/credentials' },
+    { name: 'Resume', path: '/Beadell_Resume_2024.pdf', external: true }
   ];
 
   const isActive = (path) => pathname === path;
@@ -48,17 +49,29 @@ export default function Navbar({ darkMode, setDarkMode }) {
             </Link>
             <div className="hidden sm:ml-10 sm:flex sm:space-x-8">
               {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.path}
-                  className={`${
-                    isActive(item.path)
-                      ? 'border-indigo-500 text-gray-900 dark:text-white'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white'
-                  } inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300 hover:border-indigo-300`}
-                >
-                  {item.name}
-                </Link>
+                item.external ? (
+                  <a
+                    key={item.name}
+                    href={item.path}
+                    className="border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300 hover:border-indigo-300"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.name}
+                    to={item.path}
+                    className={`${
+                      isActive(item.path)
+                        ? 'border-indigo-500 text-gray-900 dark:text-white'
+                        : 'border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white'
+                    } inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300 hover:border-indigo-300`}
+                  >
+                    {item.name}
+                  </Link>
+                )
               ))}
             </div>
           </div>
@@ -115,18 +128,31 @@ export default function Navbar({ darkMode, setDarkMode }) {
       <div className={`${isMenuOpen ? 'block' : 'hidden'} sm:hidden bg-white/90 dark:bg-gray-900/90 backdrop-blur shadow-lg`}>
         <div className="pt-2 pb-3 space-y-1">
           {navigation.map((item) => (
-            <Link
-              key={item.name}
-              to={item.path}
-              className={`${
-                isActive(item.path)
-                  ? 'bg-indigo-50 dark:bg-indigo-900/30 border-indigo-500 text-indigo-700 dark:text-indigo-300'
-                  : 'border-transparent text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white'
-              } block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition-colors`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {item.name}
-            </Link>
+            item.external ? (
+              <a
+                key={item.name}
+                href={item.path}
+                className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white text-base font-medium transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.name}
+              </a>
+            ) : (
+              <Link
+                key={item.name}
+                to={item.path}
+                className={`${
+                  isActive(item.path)
+                    ? 'bg-indigo-50 dark:bg-indigo-900/30 border-indigo-500 text-indigo-700 dark:text-indigo-300'
+                    : 'border-transparent text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white'
+                } block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition-colors`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.name}
+              </Link>
+            )
           ))}
         </div>
       </div>

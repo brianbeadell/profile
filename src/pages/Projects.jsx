@@ -244,7 +244,7 @@ export default function Projects() {
               <i className="fas fa-envelope mr-2"></i> Contact Me
             </a>
             <a 
-              href="/Brian_Beadell_Resume.pdf" 
+              href="/Beadell_Resume_2024.pdf" 
               className="bg-transparent hover:bg-white/10 text-white border border-white px-6 py-3 rounded-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
             >
               <i className="fas fa-file-pdf mr-2"></i> Download Resume

@@ -142,7 +142,7 @@ const HeroSection = () => {
               <i className="fab fa-github mr-2"></i> GitHub
             </a>
             <a 
-              href="/Brian_Beadell_Resume.pdf" 
+              href="/Beadell_Resume_2024.pdf" 
               className="bg-transparent hover:bg-white/10 text-white border border-white/30 font-medium py-3 px-8 rounded-full shadow-lg backdrop-blur-sm transition-all duration-300 transform hover:-translate-y-1"
             >
               <i className="fas fa-file-pdf mr-2"></i> Resume
