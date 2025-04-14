@@ -19,7 +19,7 @@ const initTypedEffect = () => {
   let phraseIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
-  let typingSpeed = 120;
+  let typingSpeed = 100; // Slightly faster typing
   
   const type = () => {
     const currentPhrase = phrases[phraseIndex];
@@ -27,28 +27,28 @@ const initTypedEffect = () => {
     if (isDeleting) {
       textElement.textContent = currentPhrase.substring(0, charIndex - 1);
       charIndex--;
-      typingSpeed = 80;
+      typingSpeed = 60; // Faster deletion
     } else {
       textElement.textContent = currentPhrase.substring(0, charIndex + 1);
       charIndex++;
-      typingSpeed = 120;
+      typingSpeed = 100; // Consistent typing speed
     }
     
     if (!isDeleting && charIndex === currentPhrase.length) {
       // Pause at end of phrase
-      typingSpeed = 1500;
+      typingSpeed = 2000; // Longer pause at end of phrase
       isDeleting = true;
     } else if (isDeleting && charIndex === 0) {
       isDeleting = false;
       phraseIndex = (phraseIndex + 1) % phrases.length;
       // Pause before typing next phrase
-      typingSpeed = 500;
+      typingSpeed = 700; // Increased pause between phrases
     }
     
     setTimeout(type, typingSpeed);
   };
   
-  setTimeout(type, 1000);
+  setTimeout(type, 800); // Start animation sooner
 };
 
 export default function Home() {
