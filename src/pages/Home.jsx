@@ -85,64 +85,83 @@ export default function Home() {
       <HeroSection />
       
       {/* About Section */}
-      <section id="about" ref={aboutRef} className="py-20 bg-white dark:bg-gray-900 opacity-0 transform translate-y-10 transition-all duration-1000">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-gray-800 dark:to-gray-800/50 rounded-2xl overflow-hidden shadow-xl">
+      <section id="about" ref={aboutRef} className="py-24 bg-gradient-to-b from-white to-indigo-50 dark:from-gray-900 dark:to-indigo-950/30 opacity-0 transform translate-y-10 transition-all duration-1000">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 dark:text-white">
+              <span className="inline-block transform hover:scale-110 transition-transform duration-300">
+                <i className="fas fa-user text-indigo-600 dark:text-indigo-400 mr-4"></i>
+                About Me
+              </span>
+            </h2>
+            <div className="mt-4 w-24 h-1 bg-indigo-600 mx-auto rounded-full"></div>
+          </div>
+          
+          <div className="bg-white/80 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-indigo-100/30 dark:border-indigo-900/30">
             <div className="md:flex">
-              <div className="md:w-1/3 bg-gradient-to-br from-indigo-600 to-purple-700 p-10 text-white">
-                <h2 className="text-3xl font-bold mb-4">About Me</h2>
+              <div className="md:w-1/3 bg-gradient-to-br from-indigo-600 to-purple-700 p-10 text-white relative">
+                <div className="absolute top-0 left-0 w-full h-full opacity-10">
+                  <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <path d="M0,0 L100,0 L100,100 Z" fill="white"></path>
+                  </svg>
+                </div>
+                
+                <h3 className="text-2xl font-bold mb-4 relative z-10">At a Glance</h3>
                 <div className="border-t-2 border-white/30 w-16 mb-6"></div>
-                <div className="space-y-4">
-                  <div className="flex items-center">
-                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-3">
-                      <i className="fas fa-graduation-cap"></i>
+                <div className="space-y-5 relative z-10">
+                  <div className="flex items-center transform transition-transform duration-300 hover:translate-x-2">
+                    <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mr-4 shadow-md">
+                      <i className="fas fa-graduation-cap text-xl"></i>
                     </div>
                     <div>
-                      <p className="text-white/80 text-sm">Education</p>
+                      <p className="text-white/80 text-xs uppercase tracking-wider">Education</p>
                       <p className="font-medium">M.S. Data Science</p>
                       <p className="font-medium">B.S. Biology</p>
                     </div>
                   </div>
                   
-                  <div className="flex items-center">
-                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-3">
-                      <i className="fas fa-medal"></i>
+                  <div className="flex items-center transform transition-transform duration-300 hover:translate-x-2">
+                    <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mr-4 shadow-md">
+                      <i className="fas fa-medal text-xl"></i>
                     </div>
                     <div>
-                      <p className="text-white/80 text-sm">Military</p>
+                      <p className="text-white/80 text-xs uppercase tracking-wider">Military</p>
                       <p className="font-medium">Navy Veteran</p>
+                      <p className="text-sm text-white/80">Leadership & Discipline</p>
                     </div>
                   </div>
                   
-                  <div className="flex items-center">
-                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-3">
-                      <i className="fas fa-map-marker-alt"></i>
+                  <div className="flex items-center transform transition-transform duration-300 hover:translate-x-2">
+                    <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mr-4 shadow-md">
+                      <i className="fas fa-map-marker-alt text-xl"></i>
                     </div>
                     <div>
-                      <p className="text-white/80 text-sm">Location</p>
-                      <p className="font-medium">Portland, OR (Remote)</p>
+                      <p className="text-white/80 text-xs uppercase tracking-wider">Location</p>
+                      <p className="font-medium">Portland, OR</p>
+                      <p className="text-sm text-white/80">Available Remote Worldwide</p>
                     </div>
                   </div>
                   
-                  <div className="flex items-center">
-                    <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mr-3">
-                      <i className="fas fa-laptop-code"></i>
+                  <div className="flex items-center transform transition-transform duration-300 hover:translate-x-2">
+                    <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mr-4 shadow-md">
+                      <i className="fas fa-laptop-code text-xl"></i>
                     </div>
                     <div>
-                      <p className="text-white/80 text-sm">Expertise</p>
-                      <p className="font-medium">AI/ML, Data Engineering</p>
+                      <p className="text-white/80 text-xs uppercase tracking-wider">Expertise</p>
+                      <p className="font-medium">AI/ML Engineering</p>
+                      <p className="text-sm text-white/80">Data Science & Full-Stack</p>
                     </div>
                   </div>
                 </div>
               </div>
               
               <div className="md:w-2/3 p-10">
-                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-6">
-                  Building intelligent systems that drive real-world change
+                <h3 className="text-3xl font-semibold text-gray-900 dark:text-white mb-6">
+                  Building Intelligent Systems<span className="text-indigo-600 dark:text-indigo-400"> for Real-World Impact</span>
                 </h3>
                 
-                <div className="space-y-4 text-gray-700 dark:text-gray-300">
-                  <p>
+                <div className="space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed">
+                  <p className="text-lg">
                     With a Master's in Data Science and Applied Machine Learning, I specialize in full-stack AI/ML engineering, computer vision, LLM integration, and automated decision-making tools.
                   </p>
                   
@@ -150,17 +169,41 @@ export default function Home() {
                     Before this, I served in high-pressure leadership roles as a Navy veteran, commercial diver, and medic. I bring that same precision and execution to building machine learning pipelines, geospatial tools, and voice-driven AI systems.
                   </p>
                   
-                  <div className="border-l-4 border-indigo-500 pl-4 py-2 mt-4 italic text-gray-600 dark:text-gray-400">
-                    "Calm under pressure, great at simplifying complexity, and incredibly self-motivated."
+                  <div className="bg-indigo-50 dark:bg-indigo-900/30 border-l-4 border-indigo-500 pl-6 py-4 mt-6 rounded-r-lg">
+                    <p className="italic text-gray-700 dark:text-gray-300">
+                      "Calm under pressure, great at simplifying complexity, and incredibly self-motivated."
+                    </p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">— Former Team Lead</p>
+                  </div>
+                  
+                  <div className="flex flex-wrap mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+                    <div className="flex items-center mr-8 mb-4">
+                      <div className="w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-600 dark:text-indigo-400 mr-3">
+                        <i className="fas fa-brain"></i>
+                      </div>
+                      <span>AI/ML Development</span>
+                    </div>
+                    <div className="flex items-center mr-8 mb-4">
+                      <div className="w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-600 dark:text-indigo-400 mr-3">
+                        <i className="fas fa-database"></i>
+                      </div>
+                      <span>Data Engineering</span>
+                    </div>
+                    <div className="flex items-center mb-4">
+                      <div className="w-10 h-10 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center text-indigo-600 dark:text-indigo-400 mr-3">
+                        <i className="fas fa-code"></i>
+                      </div>
+                      <span>Full-Stack Development</span>
+                    </div>
                   </div>
                 </div>
                 
                 <div className="mt-8">
                   <Link 
                     to="/credentials" 
-                    className="inline-flex items-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 font-medium"
+                    className="inline-flex items-center px-6 py-3 rounded-full bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-700 dark:hover:bg-indigo-600 text-white font-medium transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
                   >
-                    View my credentials <i className="fas fa-arrow-right ml-2"></i>
+                    <i className="fas fa-file-alt mr-2"></i> View my credentials
                   </Link>
                 </div>
               </div>
