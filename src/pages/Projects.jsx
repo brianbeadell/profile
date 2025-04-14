@@ -223,13 +223,164 @@ const projects = [
 ];
 
 const Projects = () => {
-  const projectCards = projects.map((project) => (
-    <ProjectCard key={project.title} project={project} />
-  ));
+  const headerRef = useRef(null);
+  const projectsRef = useRef(null);
+  const contactRef = useRef(null);
+
+  // Animate elements on initial load
+  useEffect(() => {
+    const animateElements = () => {
+      // Animate header
+      if (headerRef.current) {
+        headerRef.current.classList.add('animate-in');
+      }
+      
+      // Animate project cards with staggered delay
+      const projectElements = document.querySelectorAll('.project-card');
+      projectElements.forEach((project, index) => {
+        setTimeout(() => {
+          project.classList.add('animate-in');
+        }, 100 * index);
+      });
+
+      // Animate contact section
+      if (contactRef.current) {
+        setTimeout(() => {
+          contactRef.current.classList.add('animate-in');
+        }, 100 * projectElements.length + 200);
+      }
+    };
+
+    // Call animation after a short delay
+    setTimeout(animateElements, 300);
+  }, []);
 
   return (
-    <div className="projects-container">
-      {projectCards}
+    <div className="relative min-h-screen bg-gray-50 dark:bg-gray-900">
+      {/* Header section with parallax effect and contact info */}
+      <div ref={headerRef} className="relative overflow-hidden bg-indigo-900 dark:bg-gray-800 opacity-0 transform translate-y-4 transition-all duration-1000">
+        <div className="absolute inset-0 opacity-30 bg-pattern-grid"></div>
+        <div className="container mx-auto px-4 py-16 sm:py-24 relative z-10">
+          <h1 className="text-5xl font-bold text-center text-white mb-6">
+            <span className="inline-block transform transition-transform hover:scale-105 duration-300">
+              <i className="fas fa-code-branch mr-4 text-indigo-300"></i>
+              Projects Portfolio
+            </span>
+          </h1>
+          <p className="text-xl text-center text-indigo-200 max-w-3xl mx-auto mb-8">
+            A collection of AI, machine learning, data engineering, and full-stack development projects showcasing my technical capabilities and problem-solving approach.
+          </p>
+          
+          {/* Contact information - Top */}
+          <div className="flex flex-wrap justify-center gap-4 mt-6 mb-2">
+            <a 
+              href="mailto:brianbeadell.udc@gmail.com" 
+              className="bg-white/10 hover:bg-white/20 text-white font-medium py-2 px-4 rounded-full backdrop-blur-sm transition-all duration-300 transform hover:-translate-y-1 flex items-center"
+            >
+              <i className="fas fa-envelope mr-2"></i> brianbeadell.udc@gmail.com
+            </a>
+            <a 
+              href="https://github.com/brianbeadell" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-white/10 hover:bg-white/20 text-white font-medium py-2 px-4 rounded-full backdrop-blur-sm transition-all duration-300 transform hover:-translate-y-1 flex items-center"
+            >
+              <i className="fab fa-github mr-2"></i> GitHub
+            </a>
+            <a 
+              href="/Beadell_Resume_2024.pdf" 
+              className="bg-white/10 hover:bg-white/20 text-white font-medium py-2 px-4 rounded-full backdrop-blur-sm transition-all duration-300 transform hover:-translate-y-1 flex items-center"
+            >
+              <i className="fas fa-file-pdf mr-2"></i> Resume
+            </a>
+          </div>
+        </div>
+        
+        {/* Decorative elements */}
+        <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-gray-50 dark:from-gray-900 to-transparent"></div>
+        <div className="absolute -bottom-12 -right-12 w-64 h-64 rounded-full bg-indigo-600 opacity-20 dark:opacity-10 animate-pulse-slow"></div>
+        <div className="absolute -top-12 -left-12 w-64 h-64 rounded-full bg-purple-600 opacity-20 dark:opacity-10 animate-pulse-slow"></div>
+      </div>
+
+      {/* Filter categories */}
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex flex-wrap justify-center mb-8 gap-2">
+          {['All Projects', 'AI & ML', 'Data Science', 'Web Dev', 'Agriculture', 'Finance'].map((category) => (
+            <button
+              key={category}
+              className="px-5 py-2 rounded-full bg-white hover:bg-indigo-50 dark:bg-gray-800 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-medium text-sm transition-colors shadow-sm hover:shadow transform hover:scale-105 transition-transform duration-300"
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+      </div>
+      
+      {/* Projects grid */}
+      <div ref={projectsRef} className="container mx-auto px-4 py-12 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {projects.map((project, idx) => (
+          <div key={idx} className="project-card opacity-0 translate-y-4 transition-all duration-500">
+            <ProjectCard project={project} />
+          </div>
+        ))}
+      </div>
+      
+      {/* Contact section - Bottom */}
+      <div ref={contactRef} className="bg-indigo-600 dark:bg-indigo-900 py-12 mt-12 opacity-0 translate-y-4 transition-all duration-500">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold text-white mb-4">Interested in working together?</h2>
+          <p className="text-indigo-200 mb-8 max-w-3xl mx-auto">
+            I'm currently available for remote roles in AI, ML Engineering, Data Science, and related fields.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a 
+              href="mailto:brianbeadell.udc@gmail.com" 
+              className="bg-white text-indigo-600 hover:bg-indigo-50 px-6 py-3 rounded-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            >
+              <i className="fas fa-envelope mr-2"></i> Contact Me
+            </a>
+            <a 
+              href="https://github.com/brianbeadell" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-gray-800 text-white hover:bg-gray-700 px-6 py-3 rounded-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            >
+              <i className="fab fa-github mr-2"></i> GitHub
+            </a>
+            <a 
+              href="/Beadell_Resume_2024.pdf" 
+              className="bg-transparent hover:bg-white/10 text-white border border-white px-6 py-3 rounded-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            >
+              <i className="fas fa-file-pdf mr-2"></i> Download Resume
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      {/* Custom styling for animations */}
+      <style>
+        {`
+        .animate-in {
+          opacity: 1 !important;
+          transform: translateY(0) !important;
+        }
+        
+        .bg-pattern-grid {
+          background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 0);
+          background-size: 20px 20px;
+        }
+
+        @keyframes float {
+          0% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+          100% { transform: translateY(0px); }
+        }
+
+        .animate-float {
+          animation: float 3s ease-in-out infinite;
+        }
+        `}
+      </style>
     </div>
   );
 };
