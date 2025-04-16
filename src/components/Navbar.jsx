@@ -110,9 +110,9 @@ export default function Navbar() {
                 <div className="flex items-center">
                   <span className={`mr-2 text-sm font-medium transition-opacity duration-200 ${isMenuOpen ? 'opacity-0 w-0' : 'opacity-100'}`}><strong>Menu</strong></span>
                   <div className="relative w-6 h-6">
-                    <span className={`absolute h-0.5 w-6 bg-current transform transition-all duration-300 ease-in-out ${isMenuOpen ? 'rotate-45 translate-y-0' : '-translate-y-2'}`}></span>
-                    <span className={`absolute h-0.5 w-6 bg-current transform transition-all duration-300 ease-in-out ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-                    <span className={`absolute h-0.5 w-6 bg-current transform transition-all duration-300 ease-in-out ${isMenuOpen ? '-rotate-45 translate-y-0' : 'translate-y-2'}`}></span>
+                    <span className={`absolute h-0.5 w-6 bg-gray-600 transform transition-all duration-300 ease-in-out ${isMenuOpen ? 'rotate-45 translate-y-0' : '-translate-y-2'}`}></span>
+                    <span className={`absolute h-0.5 w-6 bg-gray-600 transform transition-all duration-300 ease-in-out ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
+                    <span className={`absolute h-0.5 w-6 bg-gray-600 transform transition-all duration-300 ease-in-out ${isMenuOpen ? '-rotate-45 translate-y-0' : 'translate-y-2'}`}></span>
                   </div>
                 </div>
               </button>
