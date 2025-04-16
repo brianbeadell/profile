@@ -200,16 +200,9 @@
         
         // Handle button click
         exploreButton.addEventListener('click', () => {
-            console.log('Button clicked, navigating to app.html');
             entrance.classList.add('fade-out');
             setTimeout(() => {
-                try {
-                    window.location.href = './app.html';
-                } catch (e) {
-                    console.error('Navigation error:', e);
-                    alert('Navigation error. Trying alternative method...');
-                    window.location.replace('./app.html');
-                }
+                window.location.href = 'app.html';
             }, 1000);
         });
     </script>
