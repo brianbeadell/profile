@@ -4,6 +4,28 @@ import ProjectCard from '../components/ProjectCard';
 // Main projects array with all project information
 const projects = [
   {
+    title: "Grizzle - Advanced AI Assistant",
+    stack: ["Python", "Hugging Face", "GPT-4", "PyTorch", "Speech Recognition"],
+    description: [
+      "Developed an advanced AI assistant combining NLP, reinforcement learning, and multi-modal interfaces for personalized interactions.",
+      "Implemented voice and text-based communication with reinforcement learning that adapts to user feedback.",
+      "Created a comprehensive memory system that maintains context across sessions for more natural conversations."
+    ],
+    githubUrl: "https://github.com/brianbeadell/grizzle-ai-assistant",
+    demoUrl: null,
+    longDescription: "Grizzle is an advanced AI assistant system that combines natural language processing, reinforcement learning, and multi-modal interfaces to create an interactive, personalized digital agent. The system integrates voice and text-based communication, learns from user interactions, and adapts over time to become more helpful, emotionally intelligent, and context-aware.",
+    features: [
+      "Natural language understanding using Hugging Face Transformers",
+      "Generative intelligence through OpenAI's GPT-4 with adaptive response style",
+      "Voice interface supporting both voice input and output for spoken conversations",
+      "Multi-modal interaction with plans for image and document input integration",
+      "Memory system that maintains short-term context and long-term memory across sessions",
+      "Reinforcement learning using Advantage Actor-Critic (A2C) algorithm to optimize responses",
+      "Sentiment and emotion analysis to adjust responses based on user mood"
+    ],
+    learnings: "Core Capabilities:\n- Natural Language Understanding: Utilizes Hugging Face Transformers for robust language comprehension, semantic analysis, intent detection, and contextual embedding\n- Generative Intelligence: Integrates OpenAI's GPT-4 to generate human-like responses with adaptive style based on user profiles\n- Voice Interface: Supports both voice input and output using speech recognition and TTS for real-time interaction\n- Multi-Modal Interaction: Planned integration with image and document input for learning from uploaded files\n- Memory System: Maintains context across sessions using an embedding-based knowledge manager\n- Reinforcement Learning: Implements A2C algorithm to learn optimal response strategies based on feedback\n- Sentiment Analysis: Analyzes emotional tone and adjusts responses accordingly\n\nFunctional Modules:\n- Task & Reminder System for managing user-defined tasks and schedules\n- Document Learning for parsing uploaded PDFs or documents\n- Personality Configuration for adjusting response tone and style\n- Knowledge Base Control for user curation of the assistant's internal knowledge\n\nTech Stack:\n- transformers (Hugging Face)\n- openai GPT API\n- speech_recognition, pyttsx3, whisper, or ElevenLabs for voice I/O\n- pytorch or tensorflow for reinforcement learning\n- sqlite, pinecone, faiss, or similar for memory embedding"
+  },
+  {
     title: "DQN Reinforcement Learning Trading Agent",
     stack: ["PyTorch", "Pandas", "NumPy", "Matplotlib", "yfinance"],
     description: [
