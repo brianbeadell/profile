@@ -223,6 +223,65 @@ export default function Home() {
             I'm actively pursuing remote opportunities in Data Engineering, MLOps Engineering, Generative AI, Data Science, AI/ML Engineering, Applied AI, AgTech, and Computational Biology.
           </p>
           
+          {/* Contact Form */}
+          <div className="max-w-2xl mx-auto mb-16 bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden shadow-xl">
+            <form className="p-8">
+              <div className="mb-6">
+                <h3 className="text-2xl font-bold text-white mb-4">Send Me a Message</h3>
+                <p className="text-indigo-200 mb-6">Have a question or want to work together? Feel free to reach out!</p>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label htmlFor="name" className="block text-indigo-200 text-sm font-medium mb-2">Your Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    className="w-full px-4 py-3 bg-white/5 border border-indigo-300/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 text-white"
+                    placeholder="John Doe"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-indigo-200 text-sm font-medium mb-2">Email Address</label>
+                  <input
+                    type="email"
+                    id="email"
+                    className="w-full px-4 py-3 bg-white/5 border border-indigo-300/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 text-white"
+                    placeholder="john@example.com"
+                  />
+                </div>
+              </div>
+              
+              <div className="mb-6">
+                <label htmlFor="subject" className="block text-indigo-200 text-sm font-medium mb-2">Subject</label>
+                <input
+                  type="text"
+                  id="subject"
+                  className="w-full px-4 py-3 bg-white/5 border border-indigo-300/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 text-white"
+                  placeholder="Project Opportunity"
+                />
+              </div>
+              
+              <div className="mb-6">
+                <label htmlFor="message" className="block text-indigo-200 text-sm font-medium mb-2">Message</label>
+                <textarea
+                  id="message"
+                  rows="4"
+                  className="w-full px-4 py-3 bg-white/5 border border-indigo-300/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 text-white resize-none"
+                  placeholder="Tell me about your project or inquiry..."
+                ></textarea>
+              </div>
+              
+              <button
+                type="submit"
+                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg flex items-center justify-center"
+              >
+                <i className="fas fa-paper-plane mr-2"></i>
+                Send Message
+              </button>
+            </form>
+          </div>
+          
           <div className="flex flex-wrap justify-center gap-6 mb-12">
             <a 
               href="mailto:brianbeadell.udc@gmail.com" 

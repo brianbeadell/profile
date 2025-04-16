@@ -104,25 +104,6 @@ const projects = [
     learnings: "Core Features:\n- Location-Based Weather Forecasting: Automatically detects user's location on initial load, allows manual location search with Google Places Autocomplete, displays current weather conditions with detailed metrics\n- Current Weather Display: Temperature (°F), precipitation chance (%), wind speed (mph), soil temperature (°F), soil moisture (%), weather condition icons based on weather codes\n- 7-Day Forecast: Daily weather summary for the next 7 days, min/max temperature ranges, precipitation amount, maximum wind speed, soil temperature and moisture ranges, interactive cards to select specific days\n- Detailed Hourly Charts: Temperature chart (line graph), precipitation probability chart (bar graph), soil temperature and moisture charts (line graphs), shows hourly data from 5AM to 4AM (24-hour period)\n- Agricultural Focus: Special emphasis on soil metrics useful for farming, multiple soil depth measurements, integration with a larger agricultural platform\n\nTechnical Implementation:\n- APIs Used: TimezoneDB API (for timezone information), Open-Meteo API (for weather and soil data), Google Maps/Places API (for location search)\n- Libraries: React 17.0.2, Chart.js and react-chartjs-2 (for data visualization), react-places-autocomplete (for location search), react-router-dom (for navigation)\n- Data Visualization: Line charts for temperature and soil metrics, bar charts for precipitation data, interactive elements for day selection\n\nIntegration:\n- Integrated into a larger agricultural platform with crop management, field management, reporting tools, and agronomic recommendations\n- Serves as a weather/soil conditions tool to help farmers make decisions based on current and forecasted conditions"
   },
   {
-    title: "Farstar Agent – Multi-Modal AI Agent",
-    stack: ["Python", "Whisper", "GPT-4", "Discord API"],
-    description: [
-      "Built a modular agent platform integrating voice input, multiple LLMs, DQN feedback learning, and Discord bot control.",
-      "Supports OpenAI, Claude, Cohere, HuggingFace models with full configurability."
-    ],
-    githubUrl: "https://github.com/brianbeadell/farstar-agent",
-    demoUrl: null,
-    longDescription: "Farstar is an extensible AI agent framework I developed to experiment with multi-modal input processing and reinforcement learning. It combines speech recognition, multiple LLM integrations, and communication channels like Discord into a comprehensive agent platform.",
-    features: [
-      "Voice recognition with wake word detection and Whisper models integration",
-      "Support for multiple AI providers including OpenAI, Anthropic, Cohere, and Hugging Face",
-      "Reinforcement learning system with DQN algorithm for response improvement",
-      "Discord bot integration for multi-user interaction",
-      "Modular architecture for easy extension and customization"
-    ],
-    learnings: "Agent Backend (Python):\n- Speech Recognition: Wake word detection (\"hello\" by default), Local voice-to-text processing using Whisper models, Configurable model sizes (tiny.en to large-v2), Voice Activity Detection (VAD)\n- Multi-LLM Integration: Support for multiple AI providers including OpenAI (GPT-3.5-Turbo, GPT-4, GPT-4o, GPT-4-Turbo), Anthropic (Claude models including Claude-3-Opus), Cohere (Command series models), Hugging Face (Mistral, Llama 2)\n- Reinforcement Learning: Feedback-based learning system, DQN algorithm integration, Configurable reward scaling and learning parameters\n- Data Collection: User interaction tracking and storage, SQLite database integration for storing conversations\n\nDiscord Bot Integration (C#/.NET):\n- Command prefix system (default \"!\")\n- Server and user management\n- Configuration for bot token, owner identification\n\nKey Features:\n- Multi-modal Input/Output: Voice recognition and processing, Text-based interaction, Discord platform integration\n- AI Model Flexibility: Multiple provider support, Various model options per provider, Configurable parameters\n- Learning Capabilities: Reinforcement learning to improve responses, Interaction storage for training\n- Extensibility: Modular architecture allowing for adding new providers, Configurable components\n- Security Considerations: Separate storage of sensitive API keys, Template files to avoid accidental credential exposure"
-  },
-  {
     title: "Apple Disease Identifier – Web App Deployment",
     stack: ["Flask", "PyTorch", "EfficientNet", "HTML/CSS"],
     description: [
@@ -220,6 +201,25 @@ const projects = [
     ],
     learnings: "Implementation Details:\n- Created and improved the checkout method: Implemented the `create_shopify_checkout` method in `paymentviews_bulk.py` that generates a direct cart URL\n- Simplified the URL structure to `https://shop.apical-ag.com/cart/{variant_id}:1` for reliability\n\nConfiguration:\n- Created `shopify_settings.py` with environment variables for API credentials\n- Configured shop URL, API version, and access scope settings\n- Implemented helper methods for authentication and API connectivity\n\nWebhook System:\n- Created `shopify_webhook.py` to process incoming order notifications\n- Implemented verification of webhook signatures for security\n- Set up handlers to match Shopify orders with internal bulk report orders\n\nUI Improvements:\n- Completely redesigned `shopify_bulk_payment.html` with a cleaner layout\n- Improved the user experience with better organization of payment options\n- Added a \"Report Summary\" button for better navigation\n- Made the UI more responsive and user-friendly\n\nChallenges Overcome:\n- Shifted from using the Checkout API (which required merchant approval) to a simpler cart URL approach\n- Fixed import issues with proper module paths\n- Corrected function naming from `can_pay_with_unit_credits` to `can_bulk_pay_with_unit_credits`\n- Improved error handling and logging throughout the integration"
   },
+  {
+    title: "Computer Vision System for Corn Disease Detection",
+    stack: ["PyTorch", "TensorFlow", "OpenCV", "Flask"],
+    description: [
+      "Trained a convolutional neural network to detect and classify 8 common corn diseases from field images.",
+      "Achieved 92% accuracy with CNN, ResNet-50, and data augmentation techniques, plus hosting via Flask API."
+    ],
+    githubUrl: "https://github.com/brianbeadell/corn-disease-detection",
+    demoUrl: null,
+    longDescription: "This project addresses the challenge of early disease detection in corn crops, which is crucial for preventing yield losses. I built and trained a computer vision system that can identify multiple corn diseases from smartphone photos, making it accessible to farmers without specialized equipment.",
+    features: [
+      "Custom CNN architecture with ResNet-50 transfer learning",
+      "Data augmentation to handle various lighting and field conditions",
+      "Flask API for easy integration with mobile applications",
+      "PDF report generation with disease information and treatment recommendations",
+      "Offline mode for use in areas with limited connectivity"
+    ],
+    learnings: "This project taught me practical considerations for deploying AI in agricultural settings, balancing model size with accuracy for mobile use, and the importance of diverse training data for robust field performance."
+  },
 ];
 
 const Projects = () => {
@@ -228,6 +228,67 @@ const Projects = () => {
   const contactRef = useRef(null);
   const [robotPosition, setRobotPosition] = useState({ x: 20, y: 100 });
   const [robotDirection, setRobotDirection] = useState(1); // 1 for right, -1 for left
+  const [activeCategory, setActiveCategory] = useState('All Projects');
+  const [filteredProjects, setFilteredProjects] = useState(projects);
+
+  // Filter projects when category changes
+  useEffect(() => {
+    if (activeCategory === 'All Projects') {
+      setFilteredProjects(projects);
+    } else {
+      const filtered = projects.filter(project => {
+        // Match projects to categories based on their stack and title
+        const projectText = [
+          project.title, 
+          ...project.stack, 
+          ...(project.description || []),
+          project.longDescription || ''
+        ].join(' ').toLowerCase();
+        
+        switch(activeCategory) {
+          case 'AI & ML':
+            return projectText.includes('ai') || 
+                   projectText.includes('ml') || 
+                   projectText.includes('machine learning') || 
+                   projectText.includes('neural') || 
+                   projectText.includes('tensorflow') || 
+                   projectText.includes('pytorch') ||
+                   projectText.includes('gpt') ||
+                   projectText.includes('openai');
+          case 'Data Science':
+            return projectText.includes('data') || 
+                   projectText.includes('analytics') || 
+                   projectText.includes('pandas') || 
+                   projectText.includes('scikit') ||
+                   projectText.includes('statistics');
+          case 'Web Dev':
+            return projectText.includes('react') || 
+                   projectText.includes('web') || 
+                   projectText.includes('html') || 
+                   projectText.includes('css') ||
+                   projectText.includes('javascript') ||
+                   projectText.includes('node') ||
+                   projectText.includes('express');
+          case 'Agriculture':
+            return projectText.includes('agriculture') || 
+                   projectText.includes('soil') || 
+                   projectText.includes('farm') || 
+                   projectText.includes('crop') ||
+                   projectText.includes('plant') ||
+                   projectText.includes('disease detection');
+          case 'Finance':
+            return projectText.includes('finance') || 
+                   projectText.includes('trading') || 
+                   projectText.includes('crypto') || 
+                   projectText.includes('payment') ||
+                   projectText.includes('transaction');
+          default:
+            return true;
+        }
+      });
+      setFilteredProjects(filtered);
+    }
+  }, [activeCategory]);
 
   // Robot animation
   useEffect(() => {
@@ -288,7 +349,7 @@ const Projects = () => {
 
     // Call animation after a short delay
     setTimeout(animateElements, 300);
-  }, []);
+  }, [filteredProjects]);
 
   return (
     <div className="relative min-h-screen bg-gray-50 dark:bg-gray-900">
@@ -403,13 +464,18 @@ const Projects = () => {
         <div className="absolute -top-12 -left-12 w-64 h-64 rounded-full bg-purple-600 opacity-20 dark:opacity-10 animate-pulse-slow"></div>
       </div>
 
-      {/* Filter categories */}
+      {/* Project category filters */}
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-wrap justify-center mb-8 gap-2">
           {['All Projects', 'AI & ML', 'Data Science', 'Web Dev', 'Agriculture', 'Finance'].map((category) => (
             <button
               key={category}
-              className="px-5 py-2 rounded-full bg-white hover:bg-indigo-50 dark:bg-gray-800 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 font-medium text-sm transition-colors shadow-sm hover:shadow transform hover:scale-105 transition-transform duration-300"
+              onClick={() => setActiveCategory(category)}
+              className={`px-5 py-2 rounded-full ${
+                activeCategory === category 
+                  ? 'bg-indigo-600 text-white shadow-md transform scale-105' 
+                  : 'bg-white hover:bg-indigo-50 text-gray-700 hover:shadow'
+              } border border-gray-200 font-medium text-sm transition-all duration-300`}
             >
               {category}
             </button>
@@ -419,11 +485,18 @@ const Projects = () => {
       
       {/* Projects grid */}
       <div ref={projectsRef} className="container mx-auto px-4 py-12 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((project, idx) => (
-          <div key={idx} className="project-card opacity-0 translate-y-4 transition-all duration-500">
-            <ProjectCard project={project} />
+        {filteredProjects.length > 0 ? (
+          filteredProjects.map((project, idx) => (
+            <div key={idx} className="project-card opacity-0 translate-y-4 transition-all duration-500">
+              <ProjectCard project={project} />
+            </div>
+          ))
+        ) : (
+          <div className="col-span-full text-center py-12">
+            <h3 className="text-xl text-gray-500">No projects found in this category</h3>
+            <p className="mt-2 text-gray-400">Try selecting a different category</p>
           </div>
-        ))}
+        )}
       </div>
       
       {/* Contact section - Bottom */}

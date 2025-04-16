@@ -94,7 +94,7 @@ const ProjectCard = ({ project }) => {
               <h5 className="font-medium text-gray-700 dark:text-gray-300 mb-2">Key Features:</h5>
               <ul className="list-disc pl-5 space-y-1">
                 {project.features.map((feature, idx) => (
-                  <li key={idx}>{feature}</li>
+                  <li key={idx} className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">{feature}</li>
                 ))}
               </ul>
             </div>
@@ -103,7 +103,7 @@ const ProjectCard = ({ project }) => {
           {project.learnings && (
             <div className="mt-4">
               <h5 className="font-medium text-gray-700 dark:text-gray-300 mb-2">Tech Stack & Learnings:</h5>
-              <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-md border border-gray-200 dark:border-gray-700">
+              <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-md border border-gray-200 dark:border-gray-700 hover:border-indigo-300 dark:hover:border-indigo-700 transition-colors duration-300">
                 {formatText(project.learnings)}
               </div>
             </div>
@@ -115,14 +115,14 @@ const ProjectCard = ({ project }) => {
   
   return (
     <div 
-      className="rounded-xl overflow-hidden shadow-lg transition-all duration-500 transform hover:shadow-2xl hover:-translate-y-2 bg-white dark:bg-gray-800"
+      className="rounded-xl overflow-hidden shadow-lg transition-all duration-500 transform hover:shadow-2xl hover:-translate-y-2 bg-white dark:bg-gray-800 group"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Header with gradient background */}
-      <div className={`p-6 bg-gradient-to-r ${randomGradient} relative overflow-hidden`}>
+      <div className={`p-6 bg-gradient-to-r ${randomGradient} relative overflow-hidden group-hover:bg-opacity-90 transition-all duration-300`}>
         <div className="relative z-10">
-          <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
+          <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-shadow transition-all duration-300">{project.title}</h3>
           
           {/* GitHub link if available */}
           {project.githubUrl && (
@@ -130,7 +130,7 @@ const ProjectCard = ({ project }) => {
               href={project.githubUrl} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="absolute top-4 right-4 text-white hover:text-gray-200 transition-colors"
+              className="absolute top-4 right-4 text-white hover:text-gray-200 transition-colors group-hover:rotate-6 transform transition-all duration-300"
               aria-label="GitHub Repository"
             >
               <i className="fab fa-github text-2xl"></i>
@@ -139,9 +139,9 @@ const ProjectCard = ({ project }) => {
         </div>
         
         {/* Animated background elements */}
-        <div className="absolute inset-0 z-0 opacity-20">
-          <div className="absolute top-0 left-0 w-16 h-16 rounded-full bg-white transform -translate-x-1/2 -translate-y-1/2"></div>
-          <div className="absolute bottom-0 right-0 w-32 h-32 rounded-full bg-white transform translate-x-1/4 translate-y-1/4"></div>
+        <div className="absolute inset-0 z-0 opacity-20 group-hover:opacity-30 transition-opacity duration-300">
+          <div className="absolute top-0 left-0 w-16 h-16 rounded-full bg-white transform -translate-x-1/2 -translate-y-1/2 group-hover:scale-110 transition-transform duration-300"></div>
+          <div className="absolute bottom-0 right-0 w-32 h-32 rounded-full bg-white transform translate-x-1/4 translate-y-1/4 group-hover:scale-110 transition-transform duration-300"></div>
         </div>
       </div>
       
@@ -150,7 +150,7 @@ const ProjectCard = ({ project }) => {
         {project.stack.map((tech, techIdx) => (
           <span 
             key={techIdx} 
-            className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200"
+            className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-indigo-100 dark:hover:bg-indigo-900/30 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors duration-300 transform hover:scale-105 transition-all"
           >
             <i className={`${getIconForTech(tech)} mr-1`}></i>
             {tech}
@@ -162,7 +162,7 @@ const ProjectCard = ({ project }) => {
       <div className="px-6 py-4">
         <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
           {project.description.map((bullet, bulletIdx) => (
-            <li key={bulletIdx} className="text-sm">
+            <li key={bulletIdx} className="text-sm hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-200">
               {bullet}
             </li>
           ))}
@@ -171,8 +171,18 @@ const ProjectCard = ({ project }) => {
       
       {/* Footer with action links */}
       <div className="px-6 py-4 bg-gray-50 dark:bg-gray-700/30 flex justify-end items-center">
+        {project.demoUrl && (
+          <a 
+            href={project.demoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mr-4 text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors text-sm font-medium flex items-center hover:underline"
+          >
+            <i className="fas fa-external-link-alt mr-1"></i> View Demo
+          </a>
+        )}
         <button 
-          className="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 transition-colors text-sm font-medium flex items-center"
+          className="text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors text-sm font-medium flex items-center hover:scale-105 transform transition-transform"
           onClick={() => setShowDetails(!showDetails)}
         >
           <i className={`${showDetails ? 'fas fa-chevron-up' : 'fas fa-info-circle'} mr-1`}></i> 
