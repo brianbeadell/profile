@@ -280,7 +280,7 @@ export default function Home() {
             <div className="md:w-2/3">
               <ScrollReveal delay={0.4} direction="right">
                 <div className="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden shadow-xl border border-white/10">
-                  <form className="p-8">
+                  <form className="p-8" action="https://formspree.io/f/xpzvwljk" method="POST">
                     <div className="mb-6">
                       <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
                         <i className="fas fa-paper-plane text-indigo-300 mr-3"></i> Send Me a Message
@@ -294,8 +294,10 @@ export default function Home() {
                         <input
                           type="text"
                           id="name"
+                          name="name"
                           className="w-full px-4 py-3 bg-white/5 border border-indigo-300/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 text-white"
                           placeholder="John Doe"
+                          required
                         />
                       </div>
                       <div>
@@ -303,8 +305,10 @@ export default function Home() {
                         <input
                           type="email"
                           id="email"
+                          name="email"
                           className="w-full px-4 py-3 bg-white/5 border border-indigo-300/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 text-white"
                           placeholder="john@example.com"
+                          required
                         />
                       </div>
                     </div>
@@ -314,8 +318,10 @@ export default function Home() {
                       <input
                         type="text"
                         id="subject"
+                        name="subject"
                         className="w-full px-4 py-3 bg-white/5 border border-indigo-300/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 text-white"
                         placeholder="Job Opportunity"
+                        required
                       />
                     </div>
                     
@@ -323,9 +329,11 @@ export default function Home() {
                       <label htmlFor="message" className="block text-indigo-200 text-sm font-medium mb-2">Message</label>
                       <textarea
                         id="message"
+                        name="message"
                         rows="5"
                         className="w-full px-4 py-3 bg-white/5 border border-indigo-300/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 text-white"
                         placeholder="Your message here..."
+                        required
                       ></textarea>
                     </div>
                     
