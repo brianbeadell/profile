@@ -4,6 +4,26 @@ import ProjectCard from '../components/ProjectCard';
 // Main projects array with all project information
 const projects = [
   {
+    title: "Financial AI Agent System",
+    stack: ["Python", "Phi Framework", "LLaMA 30B", "Groq API", "YFinance"],
+    description: [
+      "Developed an AI agent system leveraging the Phi framework to perform advanced financial analysis on stock market data.",
+      "Implemented three specialized agents: Market Agent for real-time stock analysis, Congress Agent for tracking political trading, and Multi AI Agent for comprehensive insights.",
+      "Utilized Groq API with LLaMA 30B for intelligent data processing and pattern recognition across market indicators and congressional trading behavior."
+    ],
+    githubUrl: "https://github.com/brianbeadell/financial-ai-agent",
+    demoUrl: null,
+    longDescription: "This system leverages AI agents built with the Phi framework to perform advanced financial analysis. It combines stock market data, technical indicators, and congressional trading behavior into a unified platform. The core models are powered by Groq API using the LLaMA 30B language model for intelligent data processing and summarization.",
+    features: [
+      "Market Agent for gathering and analyzing real-time data on top moving stocks",
+      "Congress Agent for tracking and analyzing congressional trading activity",
+      "Multi AI Agent that combines data from both agents for comprehensive analysis",
+      "Pattern highlighting using AI heuristics to flag unusual or impactful trends",
+      "Tabular reports with ranking, summaries, and signal strength indicators"
+    ],
+    learnings: "System Components:\n- Market Agent: Gathers and analyzes top moving stocks, pulls real-time data from YFinance including price history, analyst recommendations, and technical indicators (RSI, MACD, etc.), and highlights trends and anomalies in individual tickers and sectors\n- Congress Agent: Tracks congressional trading activity by public officials, uses DuckDuckGo for real-time searches on recent trades, cross-references trades with YFinance data to evaluate patterns and possible influence on stock movement, and flags politically motivated trades or high-volume timing events\n- Multi AI Agent: Combines both the Market Agent and Congress Agent into a single analysis pipeline, generates comprehensive, AI-driven summaries that capture overall market sentiment, technical and fundamental signals, and legislative trading activity relevance\n\nTech Stack & Key Features:\n- Phi Framework for modular agent orchestration and logic control\n- Groq API + LLaMA 30B for natural language processing and summarization\n- YFinance for market data, analyst insights, and price tracking\n- DuckDuckGo Search API for gathering public disclosures and news on congressional trades\n- Tabular Reports with ranking, summaries, and signal strength indicators\n- Pattern Highlighting using AI heuristics to flag unusual or impactful trends\n\nUse Cases:\n- Quantitative & qualitative stock market analysis\n- Insider trading detection via public records\n- Political economy research\n- Trading decision support"
+  },
+  {
     title: "Grizzle - Advanced AI Assistant",
     stack: ["Python", "Hugging Face", "GPT-4", "PyTorch", "Speech Recognition"],
     description: [
