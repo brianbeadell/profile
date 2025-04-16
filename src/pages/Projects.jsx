@@ -201,25 +201,6 @@ const projects = [
     ],
     learnings: "Implementation Details:\n- Created and improved the checkout method: Implemented the `create_shopify_checkout` method in `paymentviews_bulk.py` that generates a direct cart URL\n- Simplified the URL structure to `https://shop.apical-ag.com/cart/{variant_id}:1` for reliability\n\nConfiguration:\n- Created `shopify_settings.py` with environment variables for API credentials\n- Configured shop URL, API version, and access scope settings\n- Implemented helper methods for authentication and API connectivity\n\nWebhook System:\n- Created `shopify_webhook.py` to process incoming order notifications\n- Implemented verification of webhook signatures for security\n- Set up handlers to match Shopify orders with internal bulk report orders\n\nUI Improvements:\n- Completely redesigned `shopify_bulk_payment.html` with a cleaner layout\n- Improved the user experience with better organization of payment options\n- Added a \"Report Summary\" button for better navigation\n- Made the UI more responsive and user-friendly\n\nChallenges Overcome:\n- Shifted from using the Checkout API (which required merchant approval) to a simpler cart URL approach\n- Fixed import issues with proper module paths\n- Corrected function naming from `can_pay_with_unit_credits` to `can_bulk_pay_with_unit_credits`\n- Improved error handling and logging throughout the integration"
   },
-  {
-    title: "Computer Vision System for Corn Disease Detection",
-    stack: ["PyTorch", "TensorFlow", "OpenCV", "Flask"],
-    description: [
-      "Trained a convolutional neural network to detect and classify 8 common corn diseases from field images.",
-      "Achieved 92% accuracy with CNN, ResNet-50, and data augmentation techniques, plus hosting via Flask API."
-    ],
-    githubUrl: "https://github.com/brianbeadell/corn-disease-detection",
-    demoUrl: null,
-    longDescription: "This project addresses the challenge of early disease detection in corn crops, which is crucial for preventing yield losses. I built and trained a computer vision system that can identify multiple corn diseases from smartphone photos, making it accessible to farmers without specialized equipment.",
-    features: [
-      "Custom CNN architecture with ResNet-50 transfer learning",
-      "Data augmentation to handle various lighting and field conditions",
-      "Flask API for easy integration with mobile applications",
-      "PDF report generation with disease information and treatment recommendations",
-      "Offline mode for use in areas with limited connectivity"
-    ],
-    learnings: "This project taught me practical considerations for deploying AI in agricultural settings, balancing model size with accuracy for mobile use, and the importance of diverse training data for robust field performance."
-  },
 ];
 
 const Projects = () => {
