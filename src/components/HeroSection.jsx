@@ -230,9 +230,18 @@ const HeroSection = () => {
           
           <div className="flex justify-center mt-24">
             <div className="animate-bounce scale-150">
-              <a href="#skills" className="text-white opacity-70 hover:opacity-100 transition-opacity">
+              <button 
+                onClick={() => {
+                  const skillsSection = document.getElementById('skills');
+                  if (skillsSection) {
+                    skillsSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+                className="text-white opacity-70 hover:opacity-100 transition-opacity cursor-pointer" 
+                aria-label="Scroll to skills section"
+              >
                 <i className="fas fa-chevron-down text-3xl"></i>
-              </a>
+              </button>
             </div>
           </div>
         </div>

@@ -202,128 +202,145 @@ export default function Home() {
       
       {/* Contact Section */}
       <section id="contact" className="py-20 bg-gradient-to-br from-indigo-900 via-purple-900 to-indigo-900 text-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal>
-            <h2 className="text-4xl font-bold mb-8">Let's Connect</h2>
-            <p className="text-xl text-indigo-200 mb-10 max-w-2xl mx-auto">
+            <h2 className="text-4xl font-bold mb-8 text-center">Let's Connect</h2>
+            <p className="text-xl text-indigo-200 mb-12 max-w-2xl mx-auto text-center">
               I'm actively pursuing remote opportunities in Data Engineering, MLOps Engineering, Generative AI, Data Science, AI/ML Engineering, Applied AI, AgTech, and Computational Biology.
             </p>
           </ScrollReveal>
           
-          {/* Contact Form */}
-          <ScrollReveal delay={0.3}>
-            <div className="max-w-2xl mx-auto mb-16 bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden shadow-xl">
-              <form className="p-8">
-                <div className="mb-6">
-                  <h3 className="text-2xl font-bold text-white mb-4">Send Me a Message</h3>
-                  <p className="text-indigo-200 mb-6">Have a question or want to work together? Feel free to reach out!</p>
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                  <div>
-                    <label htmlFor="name" className="block text-indigo-200 text-sm font-medium mb-2">Your Name</label>
-                    <input
-                      type="text"
-                      id="name"
-                      className="w-full px-4 py-3 bg-white/5 border border-indigo-300/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 text-white"
-                      placeholder="John Doe"
-                    />
+          <div className="md:flex md:gap-10 md:items-start">
+            {/* Contact Details */}
+            <div className="md:w-1/3 mb-12 md:mb-0">
+              <ScrollReveal delay={0.2} direction="left">
+                <div className="bg-white/5 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/10">
+                  <h3 className="text-2xl font-bold mb-6 flex items-center">
+                    <i className="fas fa-address-card text-indigo-300 mr-3"></i> Contact Details
+                  </h3>
+                  
+                  <div className="space-y-6">
+                    <a 
+                      href="mailto:brianbeadell.udc@gmail.com" 
+                      className="flex items-center gap-3 p-4 rounded-xl hover:bg-white/10 transition-all duration-200 group"
+                    >
+                      <div className="w-12 h-12 rounded-full bg-indigo-600/30 flex items-center justify-center text-xl group-hover:bg-indigo-600/50 transition-all duration-200">
+                        <i className="fas fa-envelope"></i>
+                      </div>
+                      <div>
+                        <p className="text-white/70 text-sm">Email</p>
+                        <p className="font-medium">brianbeadell.udc@gmail.com</p>
+                      </div>
+                    </a>
+                    
+                    <a 
+                      href="https://linkedin.com/in/brianbeadell" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 p-4 rounded-xl hover:bg-white/10 transition-all duration-200 group"
+                    >
+                      <div className="w-12 h-12 rounded-full bg-indigo-600/30 flex items-center justify-center text-xl group-hover:bg-indigo-600/50 transition-all duration-200">
+                        <i className="fab fa-linkedin-in"></i>
+                      </div>
+                      <div>
+                        <p className="text-white/70 text-sm">LinkedIn</p>
+                        <p className="font-medium">linkedin.com/in/brianbeadell</p>
+                      </div>
+                    </a>
+                    
+                    <a 
+                      href="https://github.com/brianbeadell" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 p-4 rounded-xl hover:bg-white/10 transition-all duration-200 group"
+                    >
+                      <div className="w-12 h-12 rounded-full bg-indigo-600/30 flex items-center justify-center text-xl group-hover:bg-indigo-600/50 transition-all duration-200">
+                        <i className="fab fa-github"></i>
+                      </div>
+                      <div>
+                        <p className="text-white/70 text-sm">GitHub</p>
+                        <p className="font-medium">github.com/brianbeadell</p>
+                      </div>
+                    </a>
                   </div>
-                  <div>
-                    <label htmlFor="email" className="block text-indigo-200 text-sm font-medium mb-2">Email Address</label>
-                    <input
-                      type="email"
-                      id="email"
-                      className="w-full px-4 py-3 bg-white/5 border border-indigo-300/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 text-white"
-                      placeholder="john@example.com"
-                    />
+                  
+                  <div className="mt-10 text-center">
+                    <a 
+                      href="/profile/Beadell_Resume_2024.pdf" 
+                      className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 px-6 py-3 rounded-lg font-medium shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+                    >
+                      <i className="fas fa-file-pdf"></i> Download Resume
+                    </a>
                   </div>
                 </div>
-                
-                <div className="mb-6">
-                  <label htmlFor="subject" className="block text-indigo-200 text-sm font-medium mb-2">Subject</label>
-                  <input
-                    type="text"
-                    id="subject"
-                    className="w-full px-4 py-3 bg-white/5 border border-indigo-300/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 text-white"
-                    placeholder="Job Opportunity"
-                  />
-                </div>
-                
-                <div className="mb-6">
-                  <label htmlFor="message" className="block text-indigo-200 text-sm font-medium mb-2">Message</label>
-                  <textarea
-                    id="message"
-                    rows="4"
-                    className="w-full px-4 py-3 bg-white/5 border border-indigo-300/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 text-white"
-                    placeholder="Your message here..."
-                  ></textarea>
-                </div>
-                
-                <div className="text-center">
-                  <button
-                    type="submit"
-                    className="px-8 py-3 bg-indigo-500 hover:bg-indigo-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
-                  >
-                    Send Message
-                  </button>
-                </div>
-              </form>
+              </ScrollReveal>
             </div>
-          </ScrollReveal>
-          
-          <div className="flex flex-wrap justify-center gap-6 mb-12">
-            <a 
-              href="mailto:brianbeadell.udc@gmail.com" 
-              className="flex items-center gap-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm px-6 py-4 rounded-lg transition-all duration-300 hover:-translate-y-1"
-            >
-              <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-2xl">
-                <i className="fas fa-envelope"></i>
-              </div>
-              <div className="text-left">
-                <p className="text-white/70 text-sm">Email</p>
-                <p className="font-medium">brianbeadell.udc@gmail.com</p>
-              </div>
-            </a>
             
-            <a 
-              href="https://linkedin.com/in/brianbeadell" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm px-6 py-4 rounded-lg transition-all duration-300 hover:-translate-y-1"
-            >
-              <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-2xl">
-                <i className="fab fa-linkedin-in"></i>
-              </div>
-              <div className="text-left">
-                <p className="text-white/70 text-sm">LinkedIn</p>
-                <p className="font-medium">linkedin.com/in/brianbeadell</p>
-              </div>
-            </a>
-            
-            <a 
-              href="https://github.com/brianbeadell" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm px-6 py-4 rounded-lg transition-all duration-300 hover:-translate-y-1"
-            >
-              <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-2xl">
-                <i className="fab fa-github"></i>
-              </div>
-              <div className="text-left">
-                <p className="text-white/70 text-sm">GitHub</p>
-                <p className="font-medium">github.com/brianbeadell</p>
-              </div>
-            </a>
-          </div>
-          
-          <div className="flex justify-center">
-            <a 
-              href="/profile/Beadell_Resume_2024.pdf" 
-              className="bg-white text-indigo-700 hover:bg-indigo-100 px-8 py-4 rounded-lg font-semibold shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2"
-            >
-              <i className="fas fa-file-pdf text-xl"></i> Download Resume
-            </a>
+            {/* Contact Form */}
+            <div className="md:w-2/3">
+              <ScrollReveal delay={0.4} direction="right">
+                <div className="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden shadow-xl border border-white/10">
+                  <form className="p-8">
+                    <div className="mb-6">
+                      <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
+                        <i className="fas fa-paper-plane text-indigo-300 mr-3"></i> Send Me a Message
+                      </h3>
+                      <p className="text-indigo-200 mb-6">Have a question or want to work together? Feel free to reach out!</p>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                      <div>
+                        <label htmlFor="name" className="block text-indigo-200 text-sm font-medium mb-2">Your Name</label>
+                        <input
+                          type="text"
+                          id="name"
+                          className="w-full px-4 py-3 bg-white/5 border border-indigo-300/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 text-white"
+                          placeholder="John Doe"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="email" className="block text-indigo-200 text-sm font-medium mb-2">Email Address</label>
+                        <input
+                          type="email"
+                          id="email"
+                          className="w-full px-4 py-3 bg-white/5 border border-indigo-300/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 text-white"
+                          placeholder="john@example.com"
+                        />
+                      </div>
+                    </div>
+                    
+                    <div className="mb-6">
+                      <label htmlFor="subject" className="block text-indigo-200 text-sm font-medium mb-2">Subject</label>
+                      <input
+                        type="text"
+                        id="subject"
+                        className="w-full px-4 py-3 bg-white/5 border border-indigo-300/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 text-white"
+                        placeholder="Job Opportunity"
+                      />
+                    </div>
+                    
+                    <div className="mb-6">
+                      <label htmlFor="message" className="block text-indigo-200 text-sm font-medium mb-2">Message</label>
+                      <textarea
+                        id="message"
+                        rows="5"
+                        className="w-full px-4 py-3 bg-white/5 border border-indigo-300/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 text-white"
+                        placeholder="Your message here..."
+                      ></textarea>
+                    </div>
+                    
+                    <div className="text-right">
+                      <button
+                        type="submit"
+                        className="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+                      >
+                        <i className="fas fa-paper-plane mr-2"></i> Send Message
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </ScrollReveal>
+            </div>
           </div>
         </div>
       </section>

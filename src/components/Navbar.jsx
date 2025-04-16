@@ -71,28 +71,30 @@ export default function Navbar() {
                 Brian Beadell
               </span>
             </Link>
-            <div className="hidden sm:ml-10 sm:flex sm:space-x-8">
+            <div className="hidden sm:ml-10 sm:flex sm:space-x-4">
               {navigation.map((item) => (
                 item.external ? (
                   <a
                     key={item.name}
                     href={item.path}
-                    className="border-transparent text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300 hover:border-indigo-300"
+                    className="text-gray-600 hover:text-indigo-600 px-4 py-2 rounded-md font-medium transition-all duration-300 hover:bg-indigo-50 flex items-center"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
+                    <i className={`${item.icon} mr-2`}></i>
                     {item.name}
                   </a>
                 ) : (
                   <Link
                     key={item.name}
                     to={item.path}
-                    className={`${
+                    className={`px-4 py-2 rounded-md font-medium transition-all duration-300 flex items-center ${
                       isActive(item.path)
-                        ? 'border-indigo-500 text-gray-900'
-                        : 'border-transparent text-gray-500 hover:text-gray-700'
-                    } inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition-all duration-300 hover:border-indigo-300`}
+                        ? 'bg-indigo-600 text-white shadow-md hover:bg-indigo-700'
+                        : 'text-gray-600 hover:text-indigo-600 hover:bg-indigo-50'
+                    }`}
                   >
+                    <i className={`${item.icon} mr-2`}></i>
                     {item.name}
                   </Link>
                 )
