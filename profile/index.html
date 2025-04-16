@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/profile/assets/vite-DcBtz0py.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brian Beadell - Portfolio</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Particle.js for background effects -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    
+    <!-- GitHub Pages redirect handling -->
+    <script>
+      (function() {
+        // Check for redirect from 404 page
+        const redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        
+        // If there was a redirect, handle it
+        if (redirect && redirect !== location.href) {
+          // Extract the path from the redirect URL
+          const url = new URL(redirect);
+          const path = url.pathname.replace('/profile', '');
+          
+          // If path exists, redirect to the hash route
+          if (path && path !== '/') {
+            history.replaceState(null, null, '/profile/#' + path);
+          }
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="/profile/assets/index-BNbTHjFU.js"></script>
+    <link rel="stylesheet" crossorigin href="/profile/assets/index-B-W51p4H.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
