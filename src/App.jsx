@@ -40,6 +40,29 @@ function App() {
     };
   }, []);
   
+  // Handle hash links (like #skills) for smooth scrolling
+  useEffect(() => {
+    const handleHashLinks = (e) => {
+      const link = e.target.closest('a');
+      if (link && link.hash) {
+        e.preventDefault();
+        const targetElement = document.querySelector(link.hash);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      }
+    };
+    
+    document.addEventListener('click', handleHashLinks);
+    
+    return () => {
+      document.removeEventListener('click', handleHashLinks);
+    };
+  }, []);
+  
   return (
     <Router>
       <div className="min-h-screen bg-white dark:bg-gray-900">

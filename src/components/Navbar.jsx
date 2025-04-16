@@ -1,16 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 export default function Navbar({ darkMode, setDarkMode }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
+  const menuRef = useRef(null);
 
   const navigation = [
-    { name: 'Home', path: '/' },
-    { name: 'Projects', path: '/projects' },
-    { name: 'Credentials', path: '/credentials' },
-    { name: 'Resume', path: '/profile/Beadell_Resume_2024.pdf', external: true }
+    { name: 'Home', path: '/', icon: 'fas fa-home' },
+    { name: 'Projects', path: '/projects', icon: 'fas fa-code' },
+    { name: 'Credentials', path: '/credentials', icon: 'fas fa-certificate' },
+    { name: 'Resume', path: '/profile/Beadell_Resume_2024.pdf', external: true, icon: 'fas fa-file-pdf' }
   ];
 
   const isActive = (path) => pathname === path;
@@ -29,12 +30,39 @@ export default function Navbar({ darkMode, setDarkMode }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target) && isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isMenuOpen]);
+
+  // Disable body scroll when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
+
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
 
   return (
-    <nav className={`fixed w-full z-10 transition-all duration-300 ${
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${
       scrolled ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur shadow-md' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -95,65 +123,112 @@ export default function Navbar({ darkMode, setDarkMode }) {
             <div className="-mr-2 flex items-center sm:hidden">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none"
-                aria-expanded="false"
+                className={`inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none transition-colors ${isMenuOpen ? 'bg-gray-100 dark:bg-gray-800' : ''}`}
+                aria-expanded={isMenuOpen}
+                aria-label="Main menu"
               >
-                <span className="sr-only">Open main menu</span>
-                <svg
-                  className={`${isMenuOpen ? 'hidden' : 'block'} h-6 w-6`}
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-                <svg
-                  className={`${isMenuOpen ? 'block' : 'hidden'} h-6 w-6`}
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
+                <div className="flex items-center">
+                  <span className={`mr-2 text-sm font-medium transition-opacity duration-200 ${isMenuOpen ? 'opacity-0 w-0' : 'opacity-100'}`}>Menu</span>
+                  <div className="relative w-6 h-6">
+                    <span className={`absolute h-0.5 w-6 bg-current transform transition-all duration-300 ease-in-out ${isMenuOpen ? 'rotate-45 translate-y-0' : '-translate-y-2'}`}></span>
+                    <span className={`absolute h-0.5 w-6 bg-current transform transition-all duration-300 ease-in-out ${isMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
+                    <span className={`absolute h-0.5 w-6 bg-current transform transition-all duration-300 ease-in-out ${isMenuOpen ? '-rotate-45 translate-y-0' : 'translate-y-2'}`}></span>
+                  </div>
+                </div>
               </button>
             </div>
           </div>
         </div>
       </div>
 
-      <div className={`${isMenuOpen ? 'block' : 'hidden'} sm:hidden bg-white/90 dark:bg-gray-900/90 backdrop-blur shadow-lg`}>
-        <div className="pt-2 pb-3 space-y-1">
-          {navigation.map((item) => (
-            item.external ? (
-              <a
-                key={item.name}
-                href={item.path}
-                className="block pl-3 pr-4 py-2 border-l-4 border-transparent text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white text-base font-medium transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setIsMenuOpen(false)}
+      {/* Mobile menu, using a transition for the overlay */}
+      <div 
+        className={`fixed inset-0 z-40 bg-gray-800/70 backdrop-blur-sm transition-opacity duration-300 ${isMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        aria-hidden="true"
+      ></div>
+      
+      {/* Dropdown menu */}
+      <div 
+        ref={menuRef}
+        className={`absolute right-0 w-full sm:hidden overflow-hidden transition-all duration-300 ease-in-out transform ${
+          isMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-5 opacity-0 pointer-events-none'
+        }`}
+        style={{ maxHeight: isMenuOpen ? '400px' : '0' }}
+      >
+        <div className="mx-4 my-3 rounded-2xl bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+          <div className="pt-2 pb-3 px-1">
+            {navigation.map((item, index) => (
+              item.external ? (
+                <a
+                  key={item.name}
+                  href={item.path}
+                  className="flex items-center space-x-3 mx-2 my-1 pl-3 pr-4 py-3 rounded-xl text-gray-700 hover:bg-indigo-50 dark:text-gray-200 dark:hover:bg-indigo-900/20 transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsMenuOpen(false)}
+                  style={{ 
+                    transitionDelay: `${index * 50}ms`,
+                    opacity: isMenuOpen ? 1 : 0,
+                    transform: isMenuOpen ? 'translateX(0)' : 'translateX(10px)'
+                  }}
+                >
+                  <div className="w-8 h-8 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+                    <i className={item.icon}></i>
+                  </div>
+                  <span className="font-medium">{item.name}</span>
+                </a>
+              ) : (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className={`flex items-center space-x-3 mx-2 my-1 pl-3 pr-4 py-3 rounded-xl transition-colors ${
+                    isActive(item.path)
+                      ? 'bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300'
+                      : 'text-gray-700 hover:bg-indigo-50 dark:text-gray-200 dark:hover:bg-indigo-900/20'
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                  style={{ 
+                    transitionDelay: `${index * 50}ms`,
+                    opacity: isMenuOpen ? 1 : 0,
+                    transform: isMenuOpen ? 'translateX(0)' : 'translateX(10px)'
+                  }}
+                >
+                  <div className="w-8 h-8 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+                    <i className={item.icon}></i>
+                  </div>
+                  <span className="font-medium">{item.name}</span>
+                </Link>
+              )
+            ))}
+            
+            {/* Dark mode toggle in mobile menu */}
+            <div 
+              className="flex items-center justify-between mx-2 my-3 pl-3 pr-4 py-3 mt-4 rounded-xl border border-gray-200 dark:border-gray-700"
+              style={{ 
+                transitionDelay: `${navigation.length * 50}ms`,
+                opacity: isMenuOpen ? 1 : 0,
+                transform: isMenuOpen ? 'translateX(0)' : 'translateX(10px)'
+              }}
+            >
+              <div className="flex items-center space-x-3">
+                <div className="w-8 h-8 rounded-lg bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+                  <i className={darkMode ? "fas fa-moon" : "fas fa-sun"}></i>
+                </div>
+                <span className="font-medium text-gray-700 dark:text-gray-200">
+                  {darkMode ? "Dark Mode" : "Light Mode"}
+                </span>
+              </div>
+              <button 
+                onClick={() => {
+                  toggleDarkMode();
+                  setTimeout(() => setIsMenuOpen(false), 300);
+                }}
+                className="w-12 h-6 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center transition duration-300 focus:outline-none shadow"
               >
-                {item.name}
-              </a>
-            ) : (
-              <Link
-                key={item.name}
-                to={item.path}
-                className={`${
-                  isActive(item.path)
-                    ? 'bg-indigo-50 dark:bg-indigo-900/30 border-indigo-500 text-indigo-700 dark:text-indigo-300'
-                    : 'border-transparent text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white'
-                } block pl-3 pr-4 py-2 border-l-4 text-base font-medium transition-colors`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.name}
-              </Link>
-            )
-          ))}
+                <div className={`w-5 h-5 rounded-full bg-white shadow-md transform transition-transform duration-300 ${darkMode ? 'translate-x-6' : 'translate-x-1'}`}></div>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
