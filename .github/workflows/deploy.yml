@@ -32,10 +32,15 @@ jobs:
         
       - name: Add .nojekyll file
         run: touch dist/.nojekyll
+        
+      - name: Debug build directory
+        run: ls -la dist/
       
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
           branch: gh-pages
-          clean: true 
+          clean-exclude: |
+            .nojekyll
+          force: true 
