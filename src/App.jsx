@@ -1,27 +1,11 @@
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
 import Credentials from './pages/Credentials';
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
-  
-  useEffect(() => {
-    // Check user preference
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setDarkMode(true);
-    }
-    
-    // Add dark mode class to html element
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [darkMode]);
-  
   // Scroll to top on navigation
   useEffect(() => {
     const handleNavigation = () => {
@@ -65,8 +49,8 @@ function App() {
   
   return (
     <Router>
-      <div className="min-h-screen bg-white dark:bg-gray-900">
-        <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
+      <div className="min-h-screen bg-white">
+        <Navbar />
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
