@@ -7,10 +7,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "custom-build": "node build.js",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "predeploy": "npm run custom-build",
+    "deploy": "gh-pages -d profile"
   },
   "dependencies": {
     "react": "^19.0.0",

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="./assets/vite-DcBtz0py.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brian Beadell - Portfolio</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- Particle.js for background effects -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    
+    <script type="module" crossorigin src="./assets/index-BNbTHjFU.js"></script>
+    <link rel="stylesheet" href="./assets/index-B-W51p4H.css">
+    
+    <style>
+      /* Global styles for 3D perspective */
+      .perspective-1000 {
+        perspective: 1000px;
+      }
+      
+      /* Text shadow for hover effects */
+      .text-shadow {
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+      
+      /* Fix for z-index issues */
+      .z-50 {
+        z-index: 50;
+      }
+      
+      .z-10 {
+        z-index: 10;
+      }
+      
+      .-z-10 {
+        z-index: -10;
+      }
+      
+      /* Fix for will-change */
+      .will-change-transform {
+        will-change: transform;
+      }
+      
+      /* Fix for transitions */
+      .transition-all {
+        transition-property: all;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 300ms;
+      }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <!-- Custom script to completely override typing animation -->
+    <script>
+      // Patching the typing animation as soon as possible
+      
+      // Define our custom phrases - these are the only ones we want
+      const CUSTOM_PHRASES = [
+        'AI/ML Engineer',
+        'Generative AI Data Scientist',
+        'AgTech AI/ML Innovator',
+        'Navy Veteran',
+        'Full-Stack Developer'
+      ];
+      
+      // Find and replace the typing effect at multiple points
+      function overrideTypingAnimation() {
+        console.log("Trying to override typing animation...");
+        
+        // Method 1: Look for the typed-text element
+        const typedElement = document.querySelector('.typed-text');
+        if (typedElement) {
+          console.log("Found typed element, setting up animation");
+          setupTypingAnimation(typedElement);
+          return true;
+        }
+        
+        // If element isn't found yet, try again soon
+        setTimeout(overrideTypingAnimation, 300);
+        return false;
+      }
+      
+      // Set up the custom typing animation
+      function setupTypingAnimation(element) {
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+        
+        // Stop any existing animation by clearing all timeouts
+        // This is a brute force approach but effective
+        const highestId = window.setTimeout(() => {}, 0);
+        for (let i = 0; i < highestId; i++) {
+          window.clearTimeout(i);
+        }
+        
+        // Create our own typing function
+        function typeCharacter() {
+          const currentPhrase = CUSTOM_PHRASES[phraseIndex];
+          
+          if (isDeleting) {
+            element.textContent = currentPhrase.substring(0, charIndex - 1);
+            charIndex--;
+            typingSpeed = 60;
+          } else {
+            element.textContent = currentPhrase.substring(0, charIndex + 1);
+            charIndex++;
+            typingSpeed = 100;
+          }
+          
+          if (!isDeleting && charIndex === currentPhrase.length) {
+            typingSpeed = 2000; // Pause at end
+            isDeleting = true;
+          } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % CUSTOM_PHRASES.length;
+            typingSpeed = 700; // Pause before typing next phrase
+          }
+          
+          // Continue the typing animation
+          setTimeout(typeCharacter, typingSpeed);
+        }
+        
+        // Start typing
+        typeCharacter();
+      }
+      
+      // Start overriding as soon as possible
+      document.addEventListener('DOMContentLoaded', overrideTypingAnimation);
+      
+      // Also try after a delay in case React is slow to mount components
+      setTimeout(overrideTypingAnimation, 1000);
+      setTimeout(overrideTypingAnimation, 2000);
+      setTimeout(overrideTypingAnimation, 3000);
+    </script>
+</body>
+</html> 
