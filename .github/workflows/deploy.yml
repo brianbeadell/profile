@@ -33,40 +33,42 @@ jobs:
       - name: Add .nojekyll file
         run: touch dist/.nojekyll
         
-      - name: Create entrance.html if not exists
+      - name: Preserve entrance.html
         run: |
-          if [ ! -f dist/entrance.html ]; then
-            cp public/entrance.html dist/entrance.html || echo "entrance.html not found in public directory"
-          fi
-        
-      - name: Create app.html if not exists
-        run: |
-          if [ ! -f dist/app.html ]; then
-            cp public/app.html dist/app.html || echo "app.html not found in public directory"
-          fi
+          # Keep the original entrance.html and app.html from profile directory
+          cp profile/entrance.html dist/entrance.html || cp public/entrance.html dist/entrance.html || echo "Could not find entrance.html"
+          cp profile/app.html dist/app.html || cp public/app.html dist/app.html || echo "Could not find app.html"
         
       - name: Create redirect index.html
         run: |
+          # Create a simple redirect from index.html to entrance.html
           cat > dist/index.html << 'EOL'
           <!DOCTYPE html>
           <html lang="en">
-            <head>
-              <meta charset="UTF-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <meta http-equiv="refresh" content="0;url=entrance.html">
-              <title>Brian Beadell - Portfolio</title>
-              <script>
-                window.location.href = "entrance.html";
-              </script>
-            </head>
-            <body>
-              <p>Redirecting to Brian Beadell's Portfolio...</p>
-            </body>
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="refresh" content="0;url=entrance.html">
+            <title>Brian Beadell - Portfolio</title>
+            <script>
+              window.location.href = "entrance.html";
+            </script>
+          </head>
+          <body>
+            <p>Redirecting to Brian Beadell's Portfolio...</p>
+          </body>
           </html>
           EOL
         
       - name: Copy files to profile directory
         run: cp -r dist/* profile/
+      
+      - name: Debug directory contents
+        run: |
+          echo "Contents of profile directory:"
+          ls -la profile/
+          echo "Contents of dist directory:"
+          ls -la dist/
         
       - name: Commit and push changes
         run: |
