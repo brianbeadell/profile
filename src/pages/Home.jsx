@@ -280,7 +280,7 @@ export default function Home() {
             <div className="md:w-2/3">
               <ScrollReveal delay={0.4} direction="right">
                 <div className="bg-white/10 backdrop-blur-md rounded-2xl overflow-hidden shadow-xl border border-white/10">
-                  <form className="p-8" action="https://formspree.io/f/xpzvwljk" method="POST">
+                  <form className="p-8" action="https://formspree.io/f/myzeajev" method="POST">
                     <div className="mb-6">
                       <h3 className="text-2xl font-bold text-white mb-4 flex items-center">
                         <i className="fas fa-paper-plane text-indigo-300 mr-3"></i> Send Me a Message
