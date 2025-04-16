@@ -33,14 +33,13 @@ jobs:
       - name: Add .nojekyll file
         run: touch dist/.nojekyll
         
-      - name: Debug build directory
-        run: ls -la dist/
-      
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: dist
-          branch: gh-pages
-          clean-exclude: |
-            .nojekyll
-          force: true 
+      - name: Copy files to profile directory
+        run: cp -r dist/* profile/
+        
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'github-actions@github.com'
+          git add profile
+          git commit -m "Update built files in profile directory" || echo "No changes to commit"
+          git push 
