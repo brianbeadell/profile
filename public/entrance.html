@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brian Beadell - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        .entrance-container {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, #4c1d95 0%, #4338ca 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            overflow: hidden;
+            z-index: 100;
+        }
+        
+        .custom-cursor {
+            position: fixed;
+            width: 32px;
+            height: 32px;
+            background-color: white;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: difference;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.05s ease-out;
+        }
+        
+        .background-elements {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+        
+        .background-circle {
+            position: absolute;
+            background-color: white;
+            opacity: 0.1;
+            border-radius: 50%;
+            transform: scale(0);
+            transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .main-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 0 24px;
+            max-width: 800px;
+        }
+        
+        h1 {
+            font-size: 72px;
+            font-weight: bold;
+            margin-bottom: 24px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        
+        .subtitle {
+            font-size: 28px;
+            font-weight: 300;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s ease;
+            transition-delay: 0.3s;
+        }
+        
+        .action-button {
+            margin-top: 48px;
+            opacity: 0;
+            transition: opacity 1s ease;
+            transition-delay: 0.6s;
+        }
+        
+        button {
+            padding: 12px 32px;
+            border: 2px solid white;
+            background: transparent;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 9999px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: white;
+            color: #4c1d95;
+        }
+        
+        /* Animation classes */
+        .animate-text {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .animate-button {
+            opacity: 1;
+        }
+        
+        .animate-circles {
+            transform: scale(1);
+        }
+        
+        .fade-out {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom cursor -->
+    <div id="cursor" class="custom-cursor"></div>
+    
+    <!-- Entrance container -->
+    <div id="entrance" class="entrance-container">
+        <!-- Background elements -->
+        <div class="background-elements" id="background">
+            <!-- JS will populate this with circles -->
+        </div>
+        
+        <!-- Main content -->
+        <div class="main-content">
+            <h1 id="heading">BRIAN BEADELL</h1>
+            <div class="subtitle" id="subtitle">
+                <span>Full-Stack Developer & AI/ML Engineer</span>
+            </div>
+            <div class="action-button" id="action">
+                <button id="explore-button">EXPLORE</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Create background elements
+        const background = document.getElementById('background');
+        for (let i = 0; i < 20; i++) {
+            const circle = document.createElement('div');
+            circle.className = 'background-circle';
+            circle.style.width = `${Math.random() * 300 + 50}px`;
+            circle.style.height = circle.style.width;
+            circle.style.left = `${Math.random() * 100}%`;
+            circle.style.top = `${Math.random() * 100}%`;
+            circle.style.transitionDelay = `${Math.random() * 0.5}s`;
+            background.appendChild(circle);
+        }
+        
+        // Custom cursor
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+        });
+        
+        // Animation sequence
+        const heading = document.getElementById('heading');
+        const subtitle = document.getElementById('subtitle');
+        const action = document.getElementById('action');
+        const entrance = document.getElementById('entrance');
+        const exploreButton = document.getElementById('explore-button');
+        const circles = document.querySelectorAll('.background-circle');
+        
+        // Sequence timing
+        setTimeout(() => {
+            // Animate circles
+            circles.forEach(circle => {
+                circle.style.transform = `scale(${1 + Math.random()})`;
+            });
+            
+            // Animate heading
+            setTimeout(() => {
+                heading.classList.add('animate-text');
+                
+                // Animate subtitle
+                setTimeout(() => {
+                    subtitle.classList.add('animate-text');
+                    
+                    // Animate button
+                    setTimeout(() => {
+                        action.classList.add('animate-button');
+                    }, 600);
+                }, 800);
+            }, 700);
+        }, 500);
+        
+        // Handle button click
+        exploreButton.addEventListener('click', () => {
+            entrance.classList.add('fade-out');
+            setTimeout(() => {
+                window.location.href = 'app.html';
+            }, 1000);
+        });
+    </script>
+</body>
+</html> 
