@@ -279,9 +279,8 @@ const Projects = () => {
           case 'Finance':
             return projectText.includes('finance') || 
                    projectText.includes('trading') || 
-                   projectText.includes('crypto') || 
-                   projectText.includes('payment') ||
-                   projectText.includes('transaction');
+                   projectText.includes('crypto') ||
+                   projectText.includes('bot');
           default:
             return true;
         }
