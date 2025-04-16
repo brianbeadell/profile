@@ -46,23 +46,24 @@ const SkillsSection = () => {
       color: "indigo",
       description: "Creating intelligent systems that learn from data and adapt to new scenarios.",
       skills: [
-        { name: "Machine Learning", icon: "fas fa-cogs", proficiency: 90 },
-        { name: "Generative AI", icon: "fas fa-wand-magic-sparkles", proficiency: 85 },
-        { name: "Computer Vision", icon: "fas fa-eye", proficiency: 80 },
-        { name: "NLP", icon: "fas fa-comments", proficiency: 85 },
-        { name: "AI Agents", icon: "fas fa-robot", proficiency: 90 },
+        { name: "Machine Learning", icon: "fas fa-cogs", proficiency: 95 },
+        { name: "Generative AI", icon: "fas fa-wand-magic-sparkles", proficiency: 90 },
+        { name: "LLMs & GPT", icon: "fas fa-comment-dots", proficiency: 90 },
+        { name: "AI Agents", icon: "fas fa-robot", proficiency: 95 },
+        { name: "Reinforcement Learning", icon: "fas fa-chart-line", proficiency: 85 },
       ]
     },
     {
-      title: "Data Engineering",
-      icon: "fas fa-database",
+      title: "ML Frameworks",
+      icon: "fas fa-microchip",
       color: "blue",
-      description: "Building robust data pipelines and infrastructure for processing and analyzing data.",
+      description: "Expertise in leading machine learning and AI development frameworks.",
       skills: [
-        { name: "ETL Pipelines", icon: "fas fa-exchange-alt", proficiency: 90 },
-        { name: "SQL Databases", icon: "fas fa-table", proficiency: 90 },
-        { name: "Data Modeling", icon: "fas fa-project-diagram", proficiency: 85 },
-        { name: "Data Analysis", icon: "fas fa-chart-line", proficiency: 90 },
+        { name: "PyTorch", icon: "fas fa-fire", proficiency: 95 },
+        { name: "TensorFlow/Keras", icon: "fas fa-network-wired", proficiency: 90 },
+        { name: "Hugging Face", icon: "fas fa-code-branch", proficiency: 90 },
+        { name: "scikit-learn", icon: "fas fa-brain", proficiency: 95 },
+        { name: "LangChain/Phi", icon: "fas fa-link", proficiency: 85 },
       ]
     },
     {
@@ -72,34 +73,36 @@ const SkillsSection = () => {
       description: "Developing efficient and maintainable software across multiple languages.",
       skills: [
         { name: "Python", icon: "fab fa-python", proficiency: 95 },
-        { name: "JavaScript", icon: "fab fa-js", proficiency: 85 },
-        { name: "Java", icon: "fab fa-java", proficiency: 75 },
-        { name: "R", icon: "fas fa-chart-bar", proficiency: 80 },
-        { name: "Go", icon: "fas fa-code-branch", proficiency: 70 },
-      ]
-    },
-    {
-      title: "Web Development",
-      icon: "fas fa-laptop-code",
-      color: "purple",
-      description: "Creating responsive, modern web applications with cutting-edge frameworks.",
-      skills: [
+        { name: "JavaScript/TypeScript", icon: "fab fa-js", proficiency: 85 },
         { name: "React", icon: "fab fa-react", proficiency: 80 },
-        { name: "Django", icon: "fab fa-python", proficiency: 90 },
-        { name: "Flask", icon: "fab fa-python", proficiency: 80 },
-        { name: "HTML/CSS", icon: "fab fa-html5", proficiency: 85 },
+        { name: "Django/Flask", icon: "fab fa-python", proficiency: 90 },
+        { name: "Node.js", icon: "fab fa-node-js", proficiency: 80 },
       ]
     },
     {
-      title: "AgTech & Geospatial",
-      icon: "fas fa-leaf",
-      color: "emerald",
-      description: "Applying technology to agricultural and geographical challenges.",
+      title: "Data Engineering",
+      icon: "fas fa-database",
+      color: "purple",
+      description: "Building robust data pipelines and infrastructure for processing and analyzing data.",
       skills: [
-        { name: "Remote Sensing", icon: "fas fa-satellite", proficiency: 85 },
-        { name: "GIS", icon: "fas fa-map-marked-alt", proficiency: 85 },
-        { name: "Agricultural Analysis", icon: "fas fa-seedling", proficiency: 90 },
-        { name: "Earth Engine", icon: "fas fa-globe", proficiency: 90 },
+        { name: "pandas/NumPy", icon: "fas fa-table", proficiency: 95 },
+        { name: "PostgreSQL/MongoDB", icon: "fas fa-server", proficiency: 90 },
+        { name: "ETL Pipelines", icon: "fas fa-exchange-alt", proficiency: 90 },
+        { name: "Data Visualization", icon: "fas fa-chart-bar", proficiency: 85 },
+        { name: "yfinance/Financial Data", icon: "fas fa-dollar-sign", proficiency: 90 },
+      ]
+    },
+    {
+      title: "AI Specialties",
+      icon: "fas fa-lightbulb",
+      color: "emerald",
+      description: "Specialized AI applications and techniques for domain-specific problems.",
+      skills: [
+        { name: "NLP & Sentiment Analysis", icon: "fas fa-comments", proficiency: 90 },
+        { name: "Computer Vision", icon: "fas fa-eye", proficiency: 85 },
+        { name: "Speech Recognition", icon: "fas fa-microphone", proficiency: 85 },
+        { name: "Multi-Modal AI", icon: "fas fa-layer-group", proficiency: 85 },
+        { name: "RL Trading Systems", icon: "fas fa-chart-line", proficiency: 90 },
       ]
     },
     {
@@ -108,11 +111,11 @@ const SkillsSection = () => {
       color: "orange",
       description: "Utilizing industry-standard tools and cloud platforms for efficient development.",
       skills: [
-        { name: "AWS", icon: "fab fa-aws", proficiency: 85 },
-        { name: "TensorFlow", icon: "fas fa-network-wired", proficiency: 85 },
-        { name: "PyTorch", icon: "fas fa-fire", proficiency: 85 },
+        { name: "AWS/Cloud", icon: "fab fa-aws", proficiency: 85 },
         { name: "Docker", icon: "fab fa-docker", proficiency: 85 },
-        { name: "Git", icon: "fab fa-git-alt", proficiency: 90 },
+        { name: "Git/GitHub", icon: "fab fa-git-alt", proficiency: 90 },
+        { name: "Groq/OpenAI APIs", icon: "fas fa-plug", proficiency: 90 },
+        { name: "Playwright/Automation", icon: "fas fa-cogs", proficiency: 85 },
       ]
     },
   ];
