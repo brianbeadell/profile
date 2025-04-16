@@ -4,6 +4,26 @@ import ProjectCard from '../components/ProjectCard';
 // Main projects array with all project information
 const projects = [
   {
+    title: "DQN Reinforcement Learning Trading Agent",
+    stack: ["PyTorch", "Pandas", "NumPy", "Matplotlib", "yfinance"],
+    description: [
+      "Developed a Deep Q-Network (DQN) reinforcement learning agent for algorithmic stock trading that outperforms traditional buy-and-hold strategies.",
+      "Implemented backtest comparison with equal-weighted portfolios, tracking actions, rewards, and performance metrics.",
+      "Created visualization tools for time-series and bar comparisons with comprehensive metric outputs (returns, drawdowns, Sharpe ratio)."
+    ],
+    githubUrl: "https://github.com/brianbeadell/dqn-trading-agent",
+    demoUrl: null,
+    longDescription: "This project evaluates a Deep Q-Network (DQN) reinforcement learning agent against a traditional buy-and-hold strategy for stock trading. The system simulates trading using a financial environment and benchmarks performance metrics between the strategies.",
+    features: [
+      "DQN agent implementation with pre-trained model loading capabilities",
+      "Trading simulation in a custom financial environment",
+      "Performance tracking including total return, drawdown, and Sharpe ratio calculations",
+      "Equal-weighted buy-and-hold benchmark strategy using yfinance data",
+      "Visualization tools for comparing strategy performance with time-series and bar charts"
+    ],
+    learnings: "Core Components:\n- backtest_dqn_agent(): Loads a pre-trained DQN model, simulates trading using a financial environment, tracks actions/rewards/portfolio value, and calculates performance metrics\n- get_buy_and_hold_performance(): Downloads stock data using yfinance, applies equal-weighted buy-and-hold strategy, and calculates the same performance metrics\n- plot_comparison(): Plots time-series and bar comparison of both strategies with options to save or display results\n- main(): Coordinates strategy execution, handles directory creation and file exports, and outputs CSVs and summary comparisons\n\nTechnical Implementation:\n- PyTorch for implementing and loading the neural network architecture\n- Custom reinforcement learning environment designed for financial data\n- Performance calculation logic for real-world trading metrics\n- Data pipeline for historical stock information processing\n- Visualization system for multi-faceted strategy comparisons"
+  },
+  {
     title: "AI Job Application Automation System",
     stack: ["FastAPI", "React (Tauri)", "PostgreSQL", "OpenAI", "Playwright"],
     description: [
