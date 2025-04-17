@@ -130,11 +130,22 @@ const projects = [
     title: "theFitness App – Full-Stack Fitness Tracker",
     stack: ["MongoDB", "Express", "React", "Node.js"],
     description: [
-      "Secure fitness tracker with JWT auth, workout scheduling, and goal tracking.",
-      "Features an exercise library with filtering, tagging, and intensity scaling, plus visual UI and responsive design."
+      "Designed and built a full-stack fitness tracking application using MongoDB, Express, React, and Node.js.",
+      "Implemented JWT-based authentication, profile management, and secure CRUD operations for exercises and workouts.",
+      "Created a dynamic exercise library with filters by type, intensity, and duration; integrated visual color coding for clarity.",
+      "Developed custom workout scheduling, progress tracking, and responsive mobile-first UI using React Bootstrap."
     ],
     githubUrl: "https://github.com/brianbeadell/thefitness-app",
-    demoUrl: "https://fitness-app-demo.vercel.app"
+    demoUrl: null,
+    longDescription: "theFitness is a comprehensive fitness tracking application built using the MERN stack (MongoDB, Express, React, Node.js). The application enables users to create and manage their own exercise library, build custom workouts, track progress over time, and manage their fitness journey in a personalized, secure environment.",
+    features: [
+      "Secure user authentication system with JWT and profile management",
+      "Dynamic exercise library with type-based filtering and color-coded categories",
+      "Custom workout builder with scheduling and progress tracking",
+      "Mobile-first responsive UI with React Bootstrap",
+      "Complete data privacy with user-specific isolation in MongoDB"
+    ],
+    learnings: "Core Features:\n- User Authentication System: Secure login and registration, JWT authentication, profile management with personal goals and information\n- Exercise Library: Create, view, edit, and delete exercises, categorize by type (strength, cardio, flexibility, balance, endurance), set parameters (duration, intensity), filter with color-coded categories\n- Workout Management: Create custom workouts by combining exercises, add details like sets/reps/weight/duration/intensity, schedule workouts for specific dates, track progress, add notes\n\nTechnical Architecture:\n- Frontend (React): Components with React Router, React Bootstrap for responsive UI, state management using hooks, Axios for API requests, form handling\n- Backend (Node.js/Express): RESTful API architecture, Express.js for routing and middleware, JWT-based authentication and route protection, CRUD operations for workouts/exercises/profiles\n- Database (MongoDB): Stores user accounts, exercises, workouts, and progress data, relationships between collections, user-specific data isolation\n\nDesign Elements:\n- Color-coded exercise types and intensity levels for visual clarity\n- Card-based UI for exercises and workouts\n- Modal forms for creating and editing\n- Responsive design for mobile and desktop compatibility"
   },
   {
     title: "Geospatial Agricultural Analysis Tool",
