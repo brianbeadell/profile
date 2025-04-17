@@ -46,11 +46,12 @@ const SkillsSection = () => {
       color: "indigo",
       description: "Creating intelligent systems that learn from data and adapt to new scenarios.",
       skills: [
-        { name: "Machine Learning", icon: "fas fa-cogs", proficiency: 95 },
-        { name: "Generative AI", icon: "fas fa-wand-magic-sparkles", proficiency: 90 },
-        { name: "LLMs & GPT", icon: "fas fa-comment-dots", proficiency: 90 },
-        { name: "AI Agents", icon: "fas fa-robot", proficiency: 95 },
-        { name: "Reinforcement Learning", icon: "fas fa-chart-line", proficiency: 85 },
+        { name: "Machine Learning", icon: "fas fa-cogs", proficiency: 85 },
+        { name: "Generative AI", icon: "fas fa-wand-magic-sparkles", proficiency: 80 },
+        { name: "LLMs & GPT", icon: "fas fa-comment-dots", proficiency: 80 },
+        { name: "NLP", icon: "fas fa-comments", proficiency: 82 },
+        { name: "AI Agents", icon: "fas fa-robot", proficiency: 85 },
+        { name: "Reinforcement Learning", icon: "fas fa-chart-line", proficiency: 75 },
       ]
     },
     {
@@ -59,11 +60,11 @@ const SkillsSection = () => {
       color: "blue",
       description: "Expertise in leading machine learning and AI development frameworks.",
       skills: [
-        { name: "PyTorch", icon: "fas fa-fire", proficiency: 95 },
-        { name: "TensorFlow/Keras", icon: "fas fa-network-wired", proficiency: 90 },
-        { name: "Hugging Face", icon: "fas fa-code-branch", proficiency: 90 },
-        { name: "scikit-learn", icon: "fas fa-brain", proficiency: 95 },
-        { name: "LangChain/Phi", icon: "fas fa-link", proficiency: 85 },
+        { name: "PyTorch", icon: "fas fa-fire", proficiency: 85 },
+        { name: "TensorFlow/Keras", icon: "fas fa-network-wired", proficiency: 80 },
+        { name: "Hugging Face", icon: "fas fa-code-branch", proficiency: 80 },
+        { name: "scikit-learn", icon: "fas fa-brain", proficiency: 85 },
+        { name: "LangChain/Phi", icon: "fas fa-link", proficiency: 75 },
       ]
     },
     {
@@ -72,11 +73,11 @@ const SkillsSection = () => {
       color: "green",
       description: "Developing efficient and maintainable software across multiple languages.",
       skills: [
-        { name: "Python", icon: "fab fa-python", proficiency: 95 },
-        { name: "JavaScript/TypeScript", icon: "fab fa-js", proficiency: 85 },
-        { name: "React", icon: "fab fa-react", proficiency: 80 },
-        { name: "Django/Flask", icon: "fab fa-python", proficiency: 90 },
-        { name: "Node.js", icon: "fab fa-node-js", proficiency: 80 },
+        { name: "Python", icon: "fab fa-python", proficiency: 85 },
+        { name: "JavaScript/TypeScript", icon: "fab fa-js", proficiency: 75 },
+        { name: "React", icon: "fab fa-react", proficiency: 70 },
+        { name: "Django/Flask", icon: "fab fa-python", proficiency: 80 },
+        { name: "Node.js", icon: "fab fa-node-js", proficiency: 70 },
       ]
     },
     {
@@ -85,11 +86,11 @@ const SkillsSection = () => {
       color: "purple",
       description: "Building robust data pipelines and infrastructure for processing and analyzing data.",
       skills: [
-        { name: "pandas/NumPy", icon: "fas fa-table", proficiency: 95 },
-        { name: "PostgreSQL/MongoDB", icon: "fas fa-server", proficiency: 90 },
-        { name: "ETL Pipelines", icon: "fas fa-exchange-alt", proficiency: 90 },
-        { name: "Data Visualization", icon: "fas fa-chart-bar", proficiency: 85 },
-        { name: "yfinance/Financial Data", icon: "fas fa-dollar-sign", proficiency: 90 },
+        { name: "pandas/NumPy", icon: "fas fa-table", proficiency: 85 },
+        { name: "PostgreSQL/MongoDB", icon: "fas fa-server", proficiency: 80 },
+        { name: "ETL Pipelines", icon: "fas fa-exchange-alt", proficiency: 80 },
+        { name: "Data Visualization", icon: "fas fa-chart-bar", proficiency: 75 },
+        { name: "yfinance/Financial Data", icon: "fas fa-dollar-sign", proficiency: 80 },
       ]
     },
     {
@@ -98,11 +99,11 @@ const SkillsSection = () => {
       color: "emerald",
       description: "Specialized AI applications and techniques for domain-specific problems.",
       skills: [
-        { name: "NLP & Sentiment Analysis", icon: "fas fa-comments", proficiency: 90 },
-        { name: "Computer Vision", icon: "fas fa-eye", proficiency: 85 },
-        { name: "Speech Recognition", icon: "fas fa-microphone", proficiency: 85 },
-        { name: "Multi-Modal AI", icon: "fas fa-layer-group", proficiency: 85 },
-        { name: "RL Trading Systems", icon: "fas fa-chart-line", proficiency: 90 },
+        { name: "NLP & Sentiment Analysis", icon: "fas fa-comments", proficiency: 80 },
+        { name: "Computer Vision", icon: "fas fa-eye", proficiency: 75 },
+        { name: "Speech Recognition", icon: "fas fa-microphone", proficiency: 75 },
+        { name: "Multi-Modal AI", icon: "fas fa-layer-group", proficiency: 75 },
+        { name: "RL Trading Systems", icon: "fas fa-chart-line", proficiency: 80 },
       ]
     },
     {
@@ -111,11 +112,11 @@ const SkillsSection = () => {
       color: "orange",
       description: "Utilizing industry-standard tools and cloud platforms for efficient development.",
       skills: [
-        { name: "AWS/Cloud", icon: "fab fa-aws", proficiency: 85 },
-        { name: "Docker", icon: "fab fa-docker", proficiency: 85 },
-        { name: "Git/GitHub", icon: "fab fa-git-alt", proficiency: 90 },
-        { name: "Groq/OpenAI APIs", icon: "fas fa-plug", proficiency: 90 },
-        { name: "Playwright/Automation", icon: "fas fa-cogs", proficiency: 85 },
+        { name: "AWS/Cloud", icon: "fab fa-aws", proficiency: 75 },
+        { name: "Docker", icon: "fab fa-docker", proficiency: 75 },
+        { name: "Git/GitHub", icon: "fab fa-git-alt", proficiency: 80 },
+        { name: "Groq/OpenAI APIs", icon: "fas fa-plug", proficiency: 80 },
+        { name: "Playwright/Automation", icon: "fas fa-cogs", proficiency: 75 },
       ]
     },
   ];
@@ -247,4 +248,4 @@ const SkillsSection = () => {
   );
 };
 
-export default SkillsSection; 
+export default SkillsSection;
