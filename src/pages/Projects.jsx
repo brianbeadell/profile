@@ -140,11 +140,22 @@ const projects = [
     title: "Geospatial Agricultural Analysis Tool",
     stack: ["Google Earth Engine", "JavaScript", "HTML/CSS"],
     description: [
-      "Interactive mapping system for analyzing NDVI, biomass, temperature, and moisture from satellite imagery.",
-      "Export tools, layer controls, polygon drawing, and data overlays tailored for ag/environmental science."
+      "Developed an interactive web application for visualizing and analyzing satellite imagery using Google Earth Engine.",
+      "Implemented tools for NDVI, biomass estimation, temperature, precipitation, soil moisture, and elevation analysis.",
+      "Enabled polygon drawing, area/distance measurements, date range selection, and export to GeoJSON, KML, or Shapefile.",
+      "Designed visual overlays with color-coded maps and interactive legends to interpret crop health and climate patterns."
     ],
     githubUrl: "https://github.com/brianbeadell/geo-ag-analysis",
-    demoUrl: null
+    demoUrl: null,
+    longDescription: "This interactive web application leverages Google Earth Engine to enable farmers, environmental scientists, and land managers to make informed decisions based on Earth observation data. The platform provides a comprehensive suite of tools for analyzing various aspects of agricultural and environmental conditions through satellite imagery.",
+    features: [
+      "Interactive satellite imagery analysis with customizable date ranges",
+      "NDVI, biomass estimation, temperature, precipitation, soil moisture, and elevation analysis tools",
+      "Polygon drawing tools for area selection and analysis of specific fields",
+      "Area and distance measurement capabilities for precision agriculture",
+      "Data export functionality to GeoJSON, KML, or Shapefile formats"
+    ],
+    learnings: "Technical Implementation:\n- Google Earth Engine JavaScript API for satellite data access and analysis\n- Custom map overlays with interactive legends for data interpretation\n- Time-series analysis with Landsat, Sentinel, and MODIS imagery\n- Integration of multiple data sources including climate, soil, and vegetation indices\n- User interface design optimized for field usage by non-technical users\n\nKey Features:\n- Vegetation health tracking through NDVI visualization over time\n- Climate pattern analysis with historical temperature and precipitation data\n- Soil moisture monitoring for irrigation planning and drought assessment\n- Biomass estimation tools for yield prediction and crop monitoring\n- Elevation analysis for water flow and erosion risk assessment\n\nUser Applications:\n- Precision agriculture planning and monitoring\n- Environmental impact assessments\n- Climate change adaptation strategy development\n- Land use planning and management\n- Agricultural research and education"
   },
   {
     title: "WeatheReact – Weather & Soil Conditions App",
